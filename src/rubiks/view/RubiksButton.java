@@ -25,7 +25,6 @@ public class RubiksButton extends JButton
 	{
 		this.setOpaque(true);
 		this.setBorder(new LineBorder(Color.BLACK, 5));
-		this.setBackground(new Color(223, 223, 223));
 		background = this.getBackground();
 	}
 	
@@ -59,7 +58,18 @@ public class RubiksButton extends JButton
 			}
 		});
 	}
-	
+
+	/**
+	 * @return the id
+	 */
+	public int[] getID()
+	{
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setID(int[] id)
 	{
 		this.id = id;

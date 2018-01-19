@@ -10,7 +10,14 @@ public abstract class FacePanel extends JPanel
 {
 	protected RubiksController appController;
 	protected RubiksButton[] buttonArray;
-	
+	protected final Color[] colors = new Color[] { 
+			new Color(223, 223, 223), // White
+			new Color(0, 40, 240),    // Blue
+			new Color(255, 0, 40),    // Red
+			new Color(0, 180, 40),    // Green
+			new Color(240, 80, 0),    // Orange
+			new Color(240, 240, 0) }; // Yellow
+
 	public FacePanel(RubiksController appController)
 	{
 		super();
@@ -22,7 +29,7 @@ public abstract class FacePanel extends JPanel
 		}
 		setupPanel();
 	}
-	
+
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
@@ -32,5 +39,22 @@ public abstract class FacePanel extends JPanel
 		}
 		this.setBackground(Color.BLACK);
 		this.setBorder(new LineBorder(Color.BLACK, 3));
+	}
+
+	protected void setColors()
+	{
+		int[][] colorsAndOrientation;
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				colorsAndOrientation = appController.getCube()[this.buttonArray[i].getID()[0]][this.buttonArray[i].getID()[1]][this.buttonArray[i].getID()[2]].getColorsAndOrientation();
+				if (colorsAndOrientation[j][1] == buttonArray[i].getID()[3])
+				{
+					buttonArray[i].setBackground(colors[colorsAndOrientation[j][0]]);
+					break;
+				}
+			}
+		}
 	}
 }

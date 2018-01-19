@@ -8,6 +8,7 @@ public class FrontPanel extends FacePanel
 	{
 		super(appController);
 		setupPanel();
+		setColors();
 	}
 	
 	private void setupPanel()
