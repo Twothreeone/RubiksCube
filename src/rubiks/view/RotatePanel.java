@@ -1,6 +1,15 @@
 package rubiks.view;
 
-public abstract class RotatePanel
-{
+import javax.swing.JPanel;
+import rubiks.controller.RubiksController;
 
+public abstract class RotatePanel extends JPanel
+{
+	protected RubiksController appController;
+	
+	public RotatePanel(RubiksController appController)
+	{
+		super();
+		this.appController = appController;
+	}
 }

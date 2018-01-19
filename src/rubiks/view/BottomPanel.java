@@ -1,6 +1,13 @@
 package rubiks.view;
 
-public class BottomPanel
-{
+import java.awt.Color;
+import rubiks.controller.RubiksController;
 
+public class BottomPanel extends FacePanel
+{
+	public BottomPanel(RubiksController appController)
+	{
+		super(appController);
+		this.setBackground(Color.MAGENTA);
+	}
 }
