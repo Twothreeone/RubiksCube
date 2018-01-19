@@ -3,20 +3,21 @@ package rubiks.view;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import rubiks.controller.RubiksController;
 
 public class RubiksPanel extends JPanel
 {
-	RubiksController appController;
-	SaveLoadPanel saveLoadPanel;
-	CubeFunctionsPanel cubeFunctionsPanel;
-	RotatePanel rotateLayersPanel;
-	RotatePanel rotateCubePanel;
-	FacePanel frontPanel;
-	FacePanel topPanel;
-	FacePanel bottomPanel;
-	FacePanel leftPanel;
-	FacePanel rightPanel;
+	private RubiksController appController;
+	private SaveLoadPanel saveLoadPanel;
+	private CubeFunctionsPanel cubeFunctionsPanel;
+	private RotatePanel rotateLayersPanel;
+	private RotatePanel rotateCubePanel;
+	private FacePanel frontPanel;
+	private FacePanel topPanel;
+	private FacePanel bottomPanel;
+	private FacePanel leftPanel;
+	private FacePanel rightPanel;
 	
 	public RubiksPanel(RubiksController appController)
 	{
@@ -46,6 +47,7 @@ public class RubiksPanel extends JPanel
 		this.add(rotateLayersPanel);
 		this.add(bottomPanel);
 		this.add(rotateCubePanel);
-		this.setBackground(Color.DARK_GRAY);
+		this.setBackground(Color.BLACK);
+		setBorder(new LineBorder(new Color(0, 0, 0), 5));
 	}
 }

@@ -6,7 +6,7 @@ import rubiks.controller.RubiksController;
 
 public class CubeFunctionsPanel extends JPanel
 {
-	RubiksController appController;
+	private RubiksController appController;
 	
 	public CubeFunctionsPanel(RubiksController appController)
 	{

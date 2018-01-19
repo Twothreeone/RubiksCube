@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 
 public class RubiksFrame extends JFrame
 {
-	RubiksController appController;
-	RubiksPanel appPanel;
+	private RubiksController appController;
+	private RubiksPanel appPanel;
 
 	/**
 	 * Constructor for the RubiksFrame, sets the data members and sets up the frame.

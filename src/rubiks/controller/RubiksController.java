@@ -4,7 +4,7 @@ import rubiks.view.RubiksFrame;
 
 public class RubiksController
 {
-	RubiksFrame appFrame;
+	private RubiksFrame appFrame;
 
 	/**
 	 * Constructor for the RubiksController that creates a RubiksFrame.

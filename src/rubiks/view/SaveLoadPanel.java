@@ -6,7 +6,7 @@ import rubiks.controller.RubiksController;
 
 public class SaveLoadPanel extends JPanel
 {
-	RubiksController appController;
+	private RubiksController appController;
 	
 	public SaveLoadPanel(RubiksController appController)
 	{

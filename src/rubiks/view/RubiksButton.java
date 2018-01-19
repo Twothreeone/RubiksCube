@@ -9,9 +9,9 @@ import rubiks.controller.RubiksController;
 
 public class RubiksButton extends JButton
 {
-	RubiksController appController;
-	Color background;
-	int[] id;
+	private RubiksController appController;
+	private Color background;
+	private int[] id;
 	
 	public RubiksButton(RubiksController appController)
 	{
@@ -25,7 +25,7 @@ public class RubiksButton extends JButton
 	{
 		this.setOpaque(true);
 		this.setBorder(new LineBorder(Color.BLACK, 5));
-		this.setBackground(Color.RED);
+		this.setBackground(new Color(223, 223, 223));
 		background = this.getBackground();
 	}
 	
