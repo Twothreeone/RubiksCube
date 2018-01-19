@@ -1,6 +1,6 @@
 package rubiks.view;
 
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import rubiks.controller.RubiksController;
@@ -8,7 +8,6 @@ import rubiks.controller.RubiksController;
 public class RubiksPanel extends JPanel
 {
 	RubiksController appController;
-	GridLayout appLayout;
 	SaveLoadPanel saveLoadPanel;
 	CubeFunctionsPanel cubeFunctionsPanel;
 	RotatePanel rotateLayersPanel;
@@ -23,7 +22,6 @@ public class RubiksPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		appLayout = new GridLayout(3, 3);
 		saveLoadPanel = new SaveLoadPanel(appController);
 		cubeFunctionsPanel = new CubeFunctionsPanel(appController);
 		rotateLayersPanel = new RotateLayersPanel(appController);
@@ -38,7 +36,7 @@ public class RubiksPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		this.setLayout(appLayout);
+		this.setLayout(new GridLayout(3, 3));
 		this.add(saveLoadPanel);
 		this.add(topPanel);
 		this.add(cubeFunctionsPanel);
@@ -48,5 +46,6 @@ public class RubiksPanel extends JPanel
 		this.add(rotateLayersPanel);
 		this.add(bottomPanel);
 		this.add(rotateCubePanel);
+		this.setBackground(Color.DARK_GRAY);
 	}
 }

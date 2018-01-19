@@ -12,6 +12,6 @@ public class SaveLoadPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.DARK_GRAY);
 	}
 }

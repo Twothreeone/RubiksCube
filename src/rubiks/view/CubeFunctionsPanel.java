@@ -12,6 +12,6 @@ public class CubeFunctionsPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		this.setBackground(Color.ORANGE);
+		this.setBackground(Color.DARK_GRAY);
 	}
 }
