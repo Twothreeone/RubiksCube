@@ -31,6 +31,6 @@ public abstract class FacePanel extends JPanel
 			this.add(buttonArray[i]);
 		}
 		this.setBackground(Color.BLACK);
-		setBorder(new LineBorder(Color.BLACK, 3));
+		this.setBorder(new LineBorder(Color.BLACK, 3));
 	}
 }
