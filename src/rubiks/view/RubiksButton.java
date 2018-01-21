@@ -10,7 +10,7 @@ import rubiks.controller.RubiksController;
 public class RubiksButton extends JButton
 {
 	private RubiksController appController;
-	private Color background;
+	private Color backgroundColor;
 	private int[] id;
 	
 	public RubiksButton(RubiksController appController)
@@ -25,7 +25,6 @@ public class RubiksButton extends JButton
 	{
 		this.setOpaque(true);
 		this.setBorder(new LineBorder(Color.BLACK, 5));
-		background = this.getBackground();
 	}
 	
 	private void setupListeners()
@@ -39,12 +38,12 @@ public class RubiksButton extends JButton
 			
 			public void mousePressed(MouseEvent onClick)
 			{
-				setBackground(background.darker());
+				setBackground(backgroundColor.darker());
 			}
 			
 			public void mouseReleased(MouseEvent offClick)
 			{
-				setBackground(background);
+				setBackground(backgroundColor);
 			}
 			
 			public void mouseEntered(MouseEvent enter)
@@ -57,6 +56,15 @@ public class RubiksButton extends JButton
 				setBorder(new LineBorder(Color.BLACK, 5));
 			}
 		});
+	}
+
+	/**
+	 * @param backgroundColor the backgroundColor to set
+	 */
+	public void setBackgroundColor(Color backgroundColor)
+	{
+		this.backgroundColor = backgroundColor;
+		this.setBackground(backgroundColor);
 	}
 
 	/**
