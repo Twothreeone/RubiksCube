@@ -3,12 +3,13 @@ package rubiks.model;
 public class RubiksCube
 {
 	private RubiksPiece[][][] cube;
+	private final int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 } };
 
 	public RubiksCube()
 	{
 		cube = new RubiksPiece[3][3][3];
 		setupCube();
-		rotateFSB(new int[] {0, 1});
+		rotateFSB(new int[] { 0, 0 });
 	}
 
 	private void setupCube()
@@ -53,31 +54,22 @@ public class RubiksCube
 
 	private void rotateFSB(int[] turn)
 	{
-		int[][] orientationToSet = new int[][] { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
+		int[][] orientationToSet = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
 		RubiksPiece[][][] tempCube = cube.clone();
-		//TODO: Find a better mathematical way to set all of these.
-		tempCube[turn[1]][0][0] = cube[turn[1]][2][0];
-		tempCube[turn[1]][0][1] = cube[turn[1]][1][0];
-		tempCube[turn[1]][0][2] = cube[turn[1]][0][0];
-		tempCube[turn[1]][1][2] = cube[turn[1]][0][1];
-		tempCube[turn[1]][2][2] = cube[turn[1]][0][2];
-		tempCube[turn[1]][2][1] = cube[turn[1]][1][2];
-		tempCube[turn[1]][2][0] = cube[turn[1]][2][2];
-		tempCube[turn[1]][1][0] = cube[turn[1]][2][1];
-		tempCube[turn[1]][0][0].setOrientation(fixOrientation(tempCube[turn[1]][0][0].getOrientation(), orientationToSet));
-		tempCube[turn[1]][0][1].setOrientation(fixOrientation(tempCube[turn[1]][0][1].getOrientation(), orientationToSet));
-		tempCube[turn[1]][0][2].setOrientation(fixOrientation(tempCube[turn[1]][0][2].getOrientation(), orientationToSet));
-		tempCube[turn[1]][1][2].setOrientation(fixOrientation(tempCube[turn[1]][1][2].getOrientation(), orientationToSet));
-		tempCube[turn[1]][2][2].setOrientation(fixOrientation(tempCube[turn[1]][2][2].getOrientation(), orientationToSet));
-		tempCube[turn[1]][2][1].setOrientation(fixOrientation(tempCube[turn[1]][2][1].getOrientation(), orientationToSet));
-		tempCube[turn[1]][2][0].setOrientation(fixOrientation(tempCube[turn[1]][2][0].getOrientation(), orientationToSet));
-		tempCube[turn[1]][1][0].setOrientation(fixOrientation(tempCube[turn[1]][1][0].getOrientation(), orientationToSet));
+		for (int i = 0; i < rotation.length; i++)
+		{
+			tempCube[turn[1]][rotation[i][0]][rotation[i][1]] = cube[turn[1]][rotation[i][2]][rotation[i][3]];
+			tempCube[turn[1]][rotation[i][0]][rotation[i][1]].setOrientation(fixOrientation(tempCube[turn[1]][rotation[i][0]][rotation[i][1]].getOrientation(), orientationToSet));
+			System.out.println("\n");
+			tempCube[turn[1]][rotation[i][0]][rotation[i][1]].getOrientation();
+			System.out.println("\n");
+		}
 		cube = tempCube.clone();
 	}
 
 	private void rotateUED(int[] turn)
 	{
-		
+
 	}
 
 	private void rotateLMR(int[] turn)
@@ -89,11 +81,12 @@ public class RubiksCube
 	{
 		for (int i = 0; i < orientation.length; i++)
 		{
-			for (int j = 0; j < orientationToSet.length; j++)
+			for (int[] orient : orientationToSet)
 			{
-				if (orientation[i] == orientationToSet[j][0])
+				if (orientation[i] == orient[0])
 				{
-					orientation[i] = orientationToSet[j][1];
+					orientation[i] = orient[1];
+					break;
 				}
 			}
 		}
