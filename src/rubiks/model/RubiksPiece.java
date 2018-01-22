@@ -16,12 +16,25 @@ public class RubiksPiece
 	{
 		return colorsAndOrientation;
 	}
-
-	/**
-	 * @param colorsAndOrientation the colorsAndOrientation to set
-	 */
-	public void setColorsAndOrientation(int[][] colorsAndOrientation)
+	
+	public int[] getOrientation()
 	{
-		this.colorsAndOrientation = colorsAndOrientation;
+		int[] orientation = new int[colorsAndOrientation.length];
+		for (int i = 0; i < orientation.length; i++)
+		{
+			orientation[i] = colorsAndOrientation[i][1];
+		}
+		return orientation;
+	}
+
+	public void setOrientation(int[] orientation)
+	{
+		if (orientation.length == colorsAndOrientation.length)
+		{
+			for (int i = 0; i < orientation.length; i++)
+			{
+				colorsAndOrientation[i][1] = orientation[i];
+			}
+		}
 	}
 }

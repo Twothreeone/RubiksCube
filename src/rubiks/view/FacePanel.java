@@ -46,9 +46,9 @@ public abstract class FacePanel extends JPanel
 		int[][] colorsAndOrientation;
 		for (int i = 0; i < 9; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			colorsAndOrientation = appController.getCube()[this.buttonArray[i].getID()[0]][this.buttonArray[i].getID()[1]][this.buttonArray[i].getID()[2]].getColorsAndOrientation();
+			for (int j = 0; j < colorsAndOrientation.length; j++)
 			{
-				colorsAndOrientation = appController.getCube()[this.buttonArray[i].getID()[0]][this.buttonArray[i].getID()[1]][this.buttonArray[i].getID()[2]].getColorsAndOrientation();
 				if (colorsAndOrientation[j][1] == buttonArray[i].getID()[3])
 				{
 					buttonArray[i].setBackgroundColor(colors[colorsAndOrientation[j][0]]);
