@@ -57,9 +57,5 @@ public abstract class FacePanel extends JPanel
 				}
 			}
 		}
-		for (int i = 0; i < this.buttonArray.length; i++)
-		{
-			this.buttonArray[i].setText(this.buttonArray[i].getID()[0] + "" + this.buttonArray[i].getID()[1] + "" + this.buttonArray[i].getID()[2] + "");
-		}
 	}
 }

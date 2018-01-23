@@ -23,7 +23,7 @@ public class RubiksPiece
 		for (int i = 0; i < orientation.length; i++)
 		{
 			orientation[i] = colorsAndOrientation[i][1];
-			System.out.println(orientation[i] + " " + i);
+			//System.out.println(orientation[i] + " " + i);
 		}
 		return orientation;
 	}
