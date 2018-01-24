@@ -11,12 +11,14 @@ public class RubiksButton extends JButton
 {
 	private RubiksController appController;
 	private Color backgroundColor;
+	private boolean selected;
 	private int[] id;
 	
 	public RubiksButton(RubiksController appController)
 	{
 		super();
 		this.appController = appController;
+		selected = false;
 		setupButton();
 		setupListeners();
 	}
@@ -33,7 +35,9 @@ public class RubiksButton extends JButton
 		{
 			public void mouseClicked(MouseEvent click)
 			{
-				//TODO: Add functionality
+				appController.deselect();
+				setBorder(new LineBorder(Color.LIGHT_GRAY, 5));
+				selected = true;
 			}
 			
 			public void mousePressed(MouseEvent onClick)
@@ -48,14 +52,26 @@ public class RubiksButton extends JButton
 			
 			public void mouseEntered(MouseEvent enter)
 			{
-				setBorder(new LineBorder(Color.WHITE, 5));
+				if (!selected)
+				{
+					setBorder(new LineBorder(Color.WHITE, 5));
+				}
 			}
 			
 			public void mouseExited(MouseEvent exit)
 			{
-				setBorder(new LineBorder(Color.BLACK, 5));
+				if (!selected)
+				{
+					setBorder(new LineBorder(Color.BLACK, 5));
+				}
 			}
 		});
+	}
+	
+	public void deselect()
+	{
+		selected = false;
+		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
 	/**
@@ -65,6 +81,14 @@ public class RubiksButton extends JButton
 	{
 		this.backgroundColor = backgroundColor;
 		this.setBackground(backgroundColor);
+	}
+
+	/**
+	 * @return the selected
+	 */
+	public boolean isSelected()
+	{
+		return selected;
 	}
 
 	/**

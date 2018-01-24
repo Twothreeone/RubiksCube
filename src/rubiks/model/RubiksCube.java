@@ -118,7 +118,6 @@ public class RubiksCube
 
 	private void rotateLMR(int layer)
 	{
-		// TODO: Reverse the rotation algorithm
 		for (int i = 0; i < 3; i++)
 		{
 			int[][] orientationToSet = { { 0, 3 }, { 3, 5 }, { 5, 1 }, { 1, 0 } };

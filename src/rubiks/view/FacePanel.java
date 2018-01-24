@@ -42,20 +42,40 @@ public abstract class FacePanel extends JPanel
 		this.setBorder(new LineBorder(Color.BLACK, 3));
 	}
 
-	protected void setColors()
+	public void updateColors()
 	{
 		int[][] colorsAndOrientation;
-		for (int i = 0; i < this.buttonArray.length; i++)
+		for (RubiksButton button : buttonArray)
 		{
-			colorsAndOrientation = appController.getCube()[this.buttonArray[i].getID()[0]][this.buttonArray[i].getID()[1]][this.buttonArray[i].getID()[2]].getColorsAndOrientation();
+			colorsAndOrientation = appController.getCube()[button.getID()[0]][button.getID()[1]][button.getID()[2]].getColorsAndOrientation();
 			for (int[] colorAndOrientation : colorsAndOrientation)
 			{
 				if (colorAndOrientation[1] == orientation)
 				{
-					buttonArray[i].setBackgroundColor(colors[colorAndOrientation[0]]);
+					button.setBackgroundColor(colors[colorAndOrientation[0]]);
 					break;
 				}
 			}
 		}
+	}
+	
+	public void deselect()
+	{
+		for (RubiksButton button : buttonArray)
+		{
+			button.deselect();
+		}
+	}
+	
+	public int[] findSelected()
+	{
+		for (RubiksButton button : buttonArray)
+		{
+			if (button.isSelected())
+			{
+				return button.getID();
+			}
+		}
+		return null;
 	}
 }

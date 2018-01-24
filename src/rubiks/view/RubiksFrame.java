@@ -35,4 +35,12 @@ public class RubiksFrame extends JFrame
 		this.setResizable(false);
 		this.setVisible(true);
 	}
+	
+	/**
+	 * @return the appPanel
+	 */
+	public RubiksPanel getAppPanel()
+	{
+		return appPanel;
+	}
 }

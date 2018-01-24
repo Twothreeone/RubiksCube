@@ -11,8 +11,8 @@ public class RubiksPanel extends JPanel
 	private RubiksController appController;
 	private SaveLoadPanel saveLoadPanel;
 	private CubeFunctionsPanel cubeFunctionsPanel;
-	private RotatePanel rotateLayersPanel;
-	private RotatePanel rotateCubePanel;
+	private RotateLayersPanel rotateLayersPanel;
+	private RotateCubePanel rotateCubePanel;
 	private FacePanel frontPanel;
 	private FacePanel topPanel;
 	private FacePanel bottomPanel;
@@ -48,6 +48,40 @@ public class RubiksPanel extends JPanel
 		this.add(bottomPanel);
 		this.add(rotateCubePanel);
 		this.setBackground(Color.BLACK);
-		setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		setBorder(new LineBorder(Color.BLACK, 5));
+	}
+	
+	public void deselect()
+	{
+		frontPanel.deselect();
+		topPanel.deselect();
+		rightPanel.deselect();
+		bottomPanel.deselect();
+		leftPanel.deselect();
+	}
+	
+	public int[] findSelected()
+	{
+		if (frontPanel.findSelected() != null)
+		{
+			return frontPanel.findSelected();
+		}
+		else if (topPanel.findSelected() != null)
+		{
+			return topPanel.findSelected();
+		}
+		else if (rightPanel.findSelected() != null)
+		{
+			return rightPanel.findSelected();
+		}
+		else if (bottomPanel.findSelected() != null)
+		{
+			return bottomPanel.findSelected();
+		}
+		else if (leftPanel.findSelected() != null)
+		{
+			return leftPanel.findSelected();
+		}
+		return null;
 	}
 }
