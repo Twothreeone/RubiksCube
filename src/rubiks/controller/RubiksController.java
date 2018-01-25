@@ -17,6 +17,16 @@ public class RubiksController
 		this.cube = new RubiksCube();
 		this.appFrame = new RubiksFrame(this);
 	}
+	
+	public void deselect()
+	{
+		appFrame.getAppPanel().deselect();
+	}
+	
+	public int[] findSelected()
+	{
+		return appFrame.getAppPanel().findSelected();
+	}
 
 	/**
 	 * @return the cube
