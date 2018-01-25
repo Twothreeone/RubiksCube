@@ -10,7 +10,6 @@ public abstract class FacePanel extends JPanel
 {
 	protected RubiksController appController;
 	protected RubiksButton[] buttonArray;
-	protected int orientation;
 	protected final Color[] colors = new Color[] { 
 			new Color(223, 223, 223), // White
 			new Color(0, 40, 240),    // Blue
@@ -50,7 +49,7 @@ public abstract class FacePanel extends JPanel
 			colorsAndOrientation = appController.getCube()[button.getID()[0]][button.getID()[1]][button.getID()[2]].getColorsAndOrientation();
 			for (int[] colorAndOrientation : colorsAndOrientation)
 			{
-				if (colorAndOrientation[1] == orientation)
+				if (colorAndOrientation[1] == button.getID()[3])
 				{
 					button.setBackgroundColor(colors[colorAndOrientation[0]]);
 					break;

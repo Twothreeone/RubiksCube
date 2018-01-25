@@ -84,4 +84,13 @@ public class RubiksPanel extends JPanel
 		}
 		return null;
 	}
+	
+	public void updateColors()
+	{
+		frontPanel.updateColors();
+		topPanel.updateColors();
+		rightPanel.updateColors();
+		bottomPanel.updateColors();
+		leftPanel.updateColors();
+	}
 }

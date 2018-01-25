@@ -28,6 +28,12 @@ public class RubiksController
 		return appFrame.getAppPanel().findSelected();
 	}
 
+	public void rotateLayer(int direction, int layer, int amount)
+	{
+		cube.rotateLayer(direction, layer, amount);
+		appFrame.getAppPanel().updateColors();
+	}
+	
 	/**
 	 * @return the cube
 	 */
