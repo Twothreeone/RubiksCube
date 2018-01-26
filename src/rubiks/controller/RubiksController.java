@@ -34,6 +34,12 @@ public class RubiksController
 		appFrame.getAppPanel().updateColors();
 	}
 	
+	public void rotateCube(int direction, int amount)
+	{
+		cube.rotateCube(direction, amount);
+		appFrame.getAppPanel().updateColors();
+	}
+	
 	/**
 	 * @return the cube
 	 */

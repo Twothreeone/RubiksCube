@@ -1,7 +1,6 @@
 package rubiks.view;
 
 import rubiks.controller.RubiksController;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -12,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import rubiks.controller.RubiksController;
 
 public class RotateLayersPanel extends JPanel
 {
