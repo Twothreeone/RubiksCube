@@ -16,6 +16,15 @@ public class RubiksController
 	{
 		this.cube = new RubiksCube();
 		this.appFrame = new RubiksFrame(this);
+		scramble();
+	}
+	
+	public void scramble()
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			rotateLayer((int)(Math.random() * 3), (int)(Math.random() * 3), (int)(Math.random() * 3));
+		}
 	}
 	
 	public void deselect()
