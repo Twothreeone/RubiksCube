@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import rubiks.controller.RubiksController;
 
-public class RubiksPanel extends JPanel
+public class CubePanel extends JPanel
 {
 	private RubiksController appController;
-	private SaveLoadPanel saveLoadPanel;
+	private CubeInfoPanel cubeInfoPanel;
 	private CubeFunctionsPanel cubeFunctionsPanel;
 	private RotateLayersPanel rotateLayersPanel;
 	private RotateCubePanel rotateCubePanel;
@@ -19,11 +19,11 @@ public class RubiksPanel extends JPanel
 	private FacePanel leftPanel;
 	private FacePanel rightPanel;
 	
-	public RubiksPanel(RubiksController appController)
+	public CubePanel(RubiksController appController)
 	{
 		super();
 		this.appController = appController;
-		saveLoadPanel = new SaveLoadPanel(appController);
+		cubeInfoPanel = new CubeInfoPanel(appController);
 		cubeFunctionsPanel = new CubeFunctionsPanel(appController);
 		rotateLayersPanel = new RotateLayersPanel(appController);
 		rotateCubePanel = new RotateCubePanel(appController);
@@ -38,7 +38,7 @@ public class RubiksPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
-		this.add(saveLoadPanel);
+		this.add(cubeInfoPanel);
 		this.add(topPanel);
 		this.add(cubeFunctionsPanel);
 		this.add(leftPanel);

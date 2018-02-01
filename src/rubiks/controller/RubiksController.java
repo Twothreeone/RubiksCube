@@ -14,9 +14,13 @@ public class RubiksController
 	 */
 	public RubiksController()
 	{
-		this.cube = new RubiksCube();
-		this.appFrame = new RubiksFrame(this);
-		scramble();
+		appFrame = new RubiksFrame(this);
+	}
+	
+	public void loadCube(int size)
+	{
+		cube = new RubiksCube();
+		appFrame.loadCube(size);
 	}
 	
 	public void scramble()
@@ -29,24 +33,24 @@ public class RubiksController
 	
 	public void deselect()
 	{
-		appFrame.getAppPanel().deselect();
+		appFrame.getCubePanel().deselect();
 	}
 	
 	public int[] findSelected()
 	{
-		return appFrame.getAppPanel().findSelected();
+		return appFrame.getCubePanel().findSelected();
 	}
 
 	public void rotateLayer(int direction, int layer, int amount)
 	{
 		cube.rotateLayer(direction, layer, amount);
-		appFrame.getAppPanel().updateColors();
+		appFrame.getCubePanel().updateColors();
 	}
 	
 	public void rotateCube(int direction, int amount)
 	{
 		cube.rotateCube(direction, amount);
-		appFrame.getAppPanel().updateColors();
+		appFrame.getCubePanel().updateColors();
 	}
 	
 	/**

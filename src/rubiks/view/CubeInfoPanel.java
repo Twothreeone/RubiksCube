@@ -4,11 +4,11 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import rubiks.controller.RubiksController;
 
-public class SaveLoadPanel extends JPanel
+public class CubeInfoPanel extends JPanel
 {
 	private RubiksController appController;
 	
-	public SaveLoadPanel(RubiksController appController)
+	public CubeInfoPanel(RubiksController appController)
 	{
 		super();
 		this.appController = appController;

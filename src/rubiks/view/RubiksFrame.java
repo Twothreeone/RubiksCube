@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 public class RubiksFrame extends JFrame
 {
 	private RubiksController appController;
-	private RubiksPanel appPanel;
+	private MenuPanel menuPanel;
+	private CubePanel cubePanel;
 
 	/**
 	 * Constructor for the RubiksFrame, sets the data members and sets up the frame.
@@ -19,7 +20,7 @@ public class RubiksFrame extends JFrame
 	{
 		super();
 		this.appController = appController;
-		appPanel = new RubiksPanel(appController);
+		menuPanel = new MenuPanel(appController);
 		setupFrame();
 	}
 
@@ -28,7 +29,7 @@ public class RubiksFrame extends JFrame
 	 */
 	private void setupFrame()
 	{
-		this.setContentPane(appPanel);
+		this.setContentPane(menuPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(900, 900);
 		this.setTitle("Rubik's Cube");
@@ -36,11 +37,18 @@ public class RubiksFrame extends JFrame
 		this.setVisible(true);
 	}
 	
-	/**
-	 * @return the appPanel
-	 */
-	public RubiksPanel getAppPanel()
+	public void loadCube(int size)
 	{
-		return appPanel;
+		cubePanel = new CubePanel(appController);
+		this.setContentPane(cubePanel);
+		this.revalidate();
+	}
+	
+	/**
+	 * @return the cubePanel
+	 */
+	public CubePanel getCubePanel()
+	{
+		return cubePanel;
 	}
 }
