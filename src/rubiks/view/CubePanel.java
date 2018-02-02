@@ -13,12 +13,8 @@ public class CubePanel extends JPanel
 	private CubeFunctionsPanel cubeFunctionsPanel;
 	private RotateLayersPanel rotateLayersPanel;
 	private RotateCubePanel rotateCubePanel;
-	private FacePanel frontPanel;
-	private FacePanel topPanel;
-	private FacePanel bottomPanel;
-	private FacePanel leftPanel;
-	private FacePanel rightPanel;
-	
+	private FacePanel[] facePanels;
+
 	public CubePanel(RubiksController appController)
 	{
 		super();
@@ -27,70 +23,56 @@ public class CubePanel extends JPanel
 		cubeFunctionsPanel = new CubeFunctionsPanel(appController);
 		rotateLayersPanel = new RotateLayersPanel(appController);
 		rotateCubePanel = new RotateCubePanel(appController);
-		frontPanel = new FrontPanel(appController);
-		topPanel = new TopPanel(appController);
-		bottomPanel = new BottomPanel(appController);
-		leftPanel = new LeftPanel(appController);
-		rightPanel = new RightPanel(appController);
+		facePanels = new FacePanel[5];
+		facePanels[0] = new FrontPanel(appController);
+		facePanels[1] = new TopPanel(appController);
+		facePanels[2] = new RightPanel(appController);
+		facePanels[3] = new BottomPanel(appController);
+		facePanels[4] = new LeftPanel(appController);
 		setupPanel();
 	}
-	
+
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
 		this.add(cubeInfoPanel);
-		this.add(topPanel);
+		this.add(facePanels[1]);
 		this.add(cubeFunctionsPanel);
-		this.add(leftPanel);
-		this.add(frontPanel);
-		this.add(rightPanel);
+		this.add(facePanels[4]);
+		this.add(facePanels[0]);
+		this.add(facePanels[2]);
 		this.add(rotateLayersPanel);
-		this.add(bottomPanel);
+		this.add(facePanels[3]);
 		this.add(rotateCubePanel);
 		this.setBackground(Color.BLACK);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
-	
+
 	public void deselect()
 	{
-		frontPanel.deselect();
-		topPanel.deselect();
-		rightPanel.deselect();
-		bottomPanel.deselect();
-		leftPanel.deselect();
+		for (int i = 0; i < 5; i++)
+		{
+			facePanels[i].deselect();
+		}
 	}
-	
+
 	public int[] findSelected()
 	{
-		if (frontPanel.findSelected() != null)
+		for (int i = 0; i < 5; i++)
 		{
-			return frontPanel.findSelected();
-		}
-		else if (topPanel.findSelected() != null)
-		{
-			return topPanel.findSelected();
-		}
-		else if (rightPanel.findSelected() != null)
-		{
-			return rightPanel.findSelected();
-		}
-		else if (bottomPanel.findSelected() != null)
-		{
-			return bottomPanel.findSelected();
-		}
-		else if (leftPanel.findSelected() != null)
-		{
-			return leftPanel.findSelected();
+			if (facePanels[i].findSelected() != null)
+			{
+				return facePanels[i].findSelected();
+			}
 		}
 		return null;
 	}
-	
+
 	public void updateColors()
 	{
-		frontPanel.updateColors();
-		topPanel.updateColors();
-		rightPanel.updateColors();
-		bottomPanel.updateColors();
-		leftPanel.updateColors();
+		for (int i = 0; i < 5; i++)
+		{
+			facePanels[i].updateColors();
+		}
 	}
 }
