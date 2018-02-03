@@ -13,6 +13,11 @@ public class CubeInfoPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
+		setupPanel();
+	}
+	
+	private void setupPanel()
+	{
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}

@@ -11,12 +11,12 @@ public abstract class FacePanel extends JPanel
 	protected RubiksController appController;
 	protected RubiksButton[] buttonArray;
 	protected final Color[] colors = new Color[] { 
-			new Color(223, 223, 223), // White
-			new Color(0, 40, 240),    // Blue
-			new Color(255, 0, 40),    // Red
-			new Color(0, 180, 40),    // Green
-			new Color(240, 80, 0),    // Orange
-			new Color(240, 240, 0) }; // Yellow
+			new Color(223, 223, 223),         // White
+			new Color(0, 40, 240),            // Blue
+			new Color(255, 0, 40),            // Red
+			new Color(0, 180, 40),            // Green
+			new Color(240, 80, 0).brighter(), // Orange
+			new Color(240, 240, 0) };         // Yellow
 
 	public FacePanel(RubiksController appController)
 	{

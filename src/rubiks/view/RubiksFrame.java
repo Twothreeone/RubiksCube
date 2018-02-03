@@ -44,6 +44,12 @@ public class RubiksFrame extends JFrame
 		this.revalidate();
 	}
 	
+	public void menu()
+	{
+		this.setContentPane(menuPanel);
+		this.revalidate();
+	}
+	
 	/**
 	 * @return the cubePanel
 	 */

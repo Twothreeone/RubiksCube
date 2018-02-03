@@ -23,12 +23,23 @@ public class RubiksController
 		appFrame.loadCube(size);
 	}
 	
+	public void menu()
+	{
+		appFrame.menu();
+	}
+	
 	public void scramble()
 	{
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 10000; i++)
 		{
 			rotateLayer((int)(Math.random() * 3), (int)(Math.random() * 3), (int)(Math.random() * 3));
 		}
+	}
+	
+	public void solve(int size)
+	{
+		cube = new RubiksCube();
+		appFrame.getCubePanel().updateColors();
 	}
 	
 	public void deselect()

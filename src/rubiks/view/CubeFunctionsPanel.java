@@ -64,21 +64,21 @@ public class CubeFunctionsPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				//TODO: Add implementation
+				appController.menu();
 			}
 		});
 		scramble.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				//TODO: Add implementation
+				appController.scramble();
 			}
 		});
 		solve.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				//TODO: Add implementation
+				appController.solve(3);
 			}
 		});
 		menu.addMouseListener(new MouseAdapter()
