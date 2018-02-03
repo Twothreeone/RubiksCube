@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 public class RotateLayersPanel extends JPanel
 {
 	private RubiksController appController;
-	private JButton panelTextArea;
+	private JButton panelLabel;
 	private JButton up;
 	private JButton right;
 	private JButton down;
@@ -25,7 +25,7 @@ public class RotateLayersPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		panelTextArea = new JButton();
+		panelLabel = new JButton();
 		up = new JButton();
 		right = new JButton();
 		down = new JButton();
@@ -41,16 +41,16 @@ public class RotateLayersPanel extends JPanel
 		this.add(up);
 		this.add(new JLabel());
 		this.add(left);
-		this.add(panelTextArea);
+		this.add(panelLabel);
 		this.add(right);
 		this.add(new JLabel());
 		this.add(down);
-		panelTextArea.setText("<html>Rotate<br />Layers</html>");
-		panelTextArea.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		panelTextArea.setOpaque(true);
-		panelTextArea.setBorder(new LineBorder(Color.BLACK, 1));
-		panelTextArea.setBackground(Color.BLACK);
-		panelTextArea.setForeground(Color.WHITE);
+		panelLabel.setText("<html>Rotate<br/>Layers</html>");
+		panelLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
+		panelLabel.setOpaque(true);
+		panelLabel.setBorder(new LineBorder(Color.BLACK, 1));
+		panelLabel.setBackground(Color.BLACK);
+		panelLabel.setForeground(Color.WHITE);
 		up.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrow.png")));
 		up.setPressedIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrowPressed.png")));
 		up.setRolloverIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrowRollover.png")));

@@ -9,14 +9,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import rubiks.controller.RubiksController;
 
 public class RotateCubePanel extends JPanel
 {
 	private RubiksController appController;
-	private JTextArea panelTextArea;
+	private JButton panelLabel;
 	private JButton up;
 	private JButton right;
 	private JButton down;
@@ -28,7 +27,7 @@ public class RotateCubePanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		panelTextArea = new JTextArea();
+		panelLabel = new JButton();
 		up = new JButton();
 		right = new JButton();
 		down = new JButton();
@@ -46,17 +45,16 @@ public class RotateCubePanel extends JPanel
 		this.add(up);
 		this.add(rotateRight);
 		this.add(left);
-		this.add(panelTextArea);
+		this.add(panelLabel);
 		this.add(right);
 		this.add(new JLabel());
 		this.add(down);
-		panelTextArea.setText("Rotate Cube");
-		panelTextArea.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
-		panelTextArea.setLineWrap(true);
-		panelTextArea.setWrapStyleWord(true);
-		panelTextArea.setEditable(false);
-		panelTextArea.setForeground(Color.WHITE);
-		panelTextArea.setBackground(Color.DARK_GRAY);
+		panelLabel.setText("<html>Rotate<br/>&nbsp;Cube</html>");
+		panelLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
+		panelLabel.setOpaque(true);
+		panelLabel.setBorder(new LineBorder(Color.BLACK, 1));
+		panelLabel.setBackground(Color.BLACK);
+		panelLabel.setForeground(Color.WHITE);
 		up.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrow.png")));
 		up.setPressedIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrowPressed.png")));
 		up.setRolloverIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrowRollover.png")));
