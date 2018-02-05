@@ -75,4 +75,12 @@ public class CubePanel extends JPanel
 			facePanels[i].updateColors();
 		}
 	}
+
+	/**
+	 * @return the cubeInfoPanel
+	 */
+	public CubeInfoPanel getCubeInfoPanel()
+	{
+		return cubeInfoPanel;
+	}
 }

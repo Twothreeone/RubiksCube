@@ -32,14 +32,17 @@ public class RubiksController
 	{
 		for (int i = 0; i < 10000; i++)
 		{
-			rotateLayer((int)(Math.random() * 3), (int)(Math.random() * 3), (int)(Math.random() * 3));
+			cube.rotateLayer((int)(Math.random() * 3), (int)(Math.random() * 3), (int)(Math.random() * 3));
+			appFrame.getCubePanel().updateColors();
 		}
+		appFrame.getCubePanel().getCubeInfoPanel().startGame();
 	}
 	
 	public void solve(int size)
 	{
 		cube = new RubiksCube();
 		appFrame.getCubePanel().updateColors();
+		appFrame.getCubePanel().getCubeInfoPanel().quitGame();
 	}
 	
 	public void deselect()
@@ -54,6 +57,10 @@ public class RubiksController
 
 	public void rotateLayer(int direction, int layer, int amount)
 	{
+		if (appFrame.getCubePanel().getCubeInfoPanel().isGameStart())
+		{
+			appFrame.getCubePanel().getCubeInfoPanel().incrementMoves();
+		}
 		cube.rotateLayer(direction, layer, amount);
 		appFrame.getCubePanel().updateColors();
 	}

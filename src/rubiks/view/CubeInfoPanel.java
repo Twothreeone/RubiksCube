@@ -29,6 +29,8 @@ public class CubeInfoPanel extends JPanel
 	private int seconds;
 	private int minutes;
 	private int hours;
+	private int moveCount;
+	private boolean gameStart;
 
 	public CubeInfoPanel(RubiksController appController)
 	{
@@ -46,6 +48,8 @@ public class CubeInfoPanel extends JPanel
 		seconds = 0;
 		minutes = 0;
 		hours = 0;
+		moveCount = 0;
+		gameStart = false;
 		setupTimer();
 		setupPanel();
 		setupLayout();
@@ -129,5 +133,41 @@ public class CubeInfoPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.NORTH, timePB, 0, SpringLayout.SOUTH, time);
 		springLayout.putConstraint(SpringLayout.NORTH, moves, 0, SpringLayout.SOUTH, timePB);
 		springLayout.putConstraint(SpringLayout.NORTH, movesPB, 0, SpringLayout.SOUTH, moves);
+	}
+	
+	public void startGame()
+	{
+		timer.stop();
+		time.setText("00:00:00.0");
+		moves.setText("Moves: 000000");
+		moveCount = 0;
+		gameStart = true;
+	}
+
+	public void incrementMoves()
+	{
+		if (gameStart)
+		{
+			moveCount++;
+			moves.setText("Moves: " + movesFormat.format(moveCount));
+			if (moveCount == 1)
+			{
+				timer.start();
+			}
+		}
+	}
+	
+	public void quitGame()
+	{
+		startGame();
+		gameStart = false;
+	}
+
+	/**
+	 * @return the gameStart
+	 */
+	public boolean isGameStart()
+	{
+		return gameStart;
 	}
 }
