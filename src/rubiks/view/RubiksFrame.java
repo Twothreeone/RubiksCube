@@ -1,6 +1,7 @@
 package rubiks.view;
 
 import rubiks.controller.RubiksController;
+import java.awt.Color;
 import javax.swing.JFrame;
 
 public class RubiksFrame extends JFrame
@@ -33,6 +34,7 @@ public class RubiksFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(900, 900);
 		this.setTitle("Rubik's Cube");
+		this.setBackground(Color.BLACK);
 		this.setResizable(false);
 		this.setVisible(true);
 	}

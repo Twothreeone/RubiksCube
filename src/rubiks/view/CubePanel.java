@@ -35,15 +35,15 @@ public class CubePanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
-		this.add(cubeInfoPanel);
-		this.add(facePanels[1]);
 		this.add(cubeFunctionsPanel);
+		this.add(facePanels[1]);
+		this.add(cubeInfoPanel);
 		this.add(facePanels[4]);
 		this.add(facePanels[0]);
 		this.add(facePanels[2]);
-		this.add(rotateLayersPanel);
-		this.add(facePanels[3]);
 		this.add(rotateCubePanel);
+		this.add(facePanels[3]);
+		this.add(rotateLayersPanel);
 		this.setBackground(Color.BLACK);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}

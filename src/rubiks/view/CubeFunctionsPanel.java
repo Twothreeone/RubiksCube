@@ -38,22 +38,22 @@ public class CubeFunctionsPanel extends JPanel
 		this.add(solve);
 		menu.setOpaque(true);
 		menu.setText("Menu");
-		menu.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
+		menu.setFont(new Font("Lucida Grande", Font.BOLD, 50));
 		menu.setForeground(Color.WHITE);
 		menu.setBackground(Color.DARK_GRAY);
-		menu.setBorder(new LineBorder(Color.BLACK, 3));
+		menu.setBorder(new LineBorder(Color.BLACK, 5));
 		scramble.setOpaque(true);
 		scramble.setText("Scramble");
-		scramble.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
+		scramble.setFont(new Font("Lucida Grande", Font.BOLD, 50));
 		scramble.setForeground(Color.WHITE);
 		scramble.setBackground(Color.DARK_GRAY);
-		scramble.setBorder(new LineBorder(Color.BLACK, 3));
+		scramble.setBorder(new LineBorder(Color.BLACK, 5));
 		solve.setOpaque(true);
 		solve.setText("Solve");
-		solve.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
+		solve.setFont(new Font("Lucida Grande", Font.BOLD, 50));
 		solve.setForeground(Color.WHITE);
 		solve.setBackground(Color.DARK_GRAY);
-		solve.setBorder(new LineBorder(Color.BLACK, 3));
+		solve.setBorder(new LineBorder(Color.BLACK, 5));
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}

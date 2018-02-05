@@ -50,9 +50,9 @@ public class RotateCubePanel extends JPanel
 		this.add(new JLabel());
 		this.add(down);
 		panelLabel.setText("<html>Rotate<br/>&nbsp;Cube</html>");
-		panelLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
+		panelLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		panelLabel.setOpaque(true);
-		panelLabel.setBorder(new LineBorder(Color.BLACK, 1));
+		panelLabel.setBorder(new LineBorder(Color.WHITE, 3));
 		panelLabel.setBackground(Color.BLACK);
 		panelLabel.setForeground(Color.WHITE);
 		up.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/upArrow.png")));
