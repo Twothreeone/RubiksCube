@@ -21,11 +21,13 @@ public class RubiksController
 	{
 		cube = new RubiksCube();
 		appFrame.loadCube(size);
+		appFrame.requestFocus();
 	}
 	
 	public void menu()
 	{
 		appFrame.menu();
+		appFrame.requestFocus();
 	}
 	
 	public void scramble()
@@ -36,6 +38,7 @@ public class RubiksController
 			appFrame.getCubePanel().updateColors();
 		}
 		appFrame.getCubePanel().getCubeInfoPanel().startGame();
+		appFrame.requestFocus();
 	}
 	
 	public void solve(int size)
@@ -43,11 +46,13 @@ public class RubiksController
 		cube = new RubiksCube();
 		appFrame.getCubePanel().updateColors();
 		appFrame.getCubePanel().getCubeInfoPanel().quitGame();
+		appFrame.requestFocus();
 	}
 	
 	public void deselect()
 	{
 		appFrame.getCubePanel().deselect();
+		appFrame.requestFocus();
 	}
 	
 	public int[] findSelected()
@@ -63,12 +68,14 @@ public class RubiksController
 		}
 		cube.rotateLayer(direction, layer, amount);
 		appFrame.getCubePanel().updateColors();
+		appFrame.requestFocus();
 	}
 	
 	public void rotateCube(int direction, int amount)
 	{
 		cube.rotateCube(direction, amount);
 		appFrame.getCubePanel().updateColors();
+		appFrame.requestFocus();
 	}
 	
 	/**
