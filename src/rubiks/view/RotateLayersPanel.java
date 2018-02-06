@@ -85,17 +85,11 @@ public class RotateLayersPanel extends JPanel
 				if (id != null)
 				{
 					if (id[3] == 0 || id[3] == 1 || id[3] == 3)
-					{
 						appController.rotateLayer(2, id[4], 1);
-					}
 					else if (id[3] == 2)
-					{
 						appController.rotateLayer(0, id[4], 3);
-					}
 					else if (id[3] == 4)
-					{
 						appController.rotateLayer(0, id[4], 1);
-					}
 				}
 			}
 		});
@@ -107,17 +101,11 @@ public class RotateLayersPanel extends JPanel
 				if (id != null)
 				{
 					if (id[3] == 0 || id[3] == 2 || id[3] == 4)
-					{
 						appController.rotateLayer(1, id[5], 1);
-					}
 					else if (id[3] == 1)
-					{
 						appController.rotateLayer(0, id[5], 1);
-					}
 					else if (id[3] == 3)
-					{
 						appController.rotateLayer(0, id[5], 3);
-					}
 				}
 			}
 		});
@@ -129,17 +117,11 @@ public class RotateLayersPanel extends JPanel
 				if (id != null)
 				{
 					if (id[3] == 0 || id[3] == 1 || id[3] == 3)
-					{
 						appController.rotateLayer(2, id[4], 3);
-					}
 					else if (id[3] == 2)
-					{
 						appController.rotateLayer(0, id[4], 1);
-					}
 					else if (id[3] == 4)
-					{
 						appController.rotateLayer(0, id[4], 3);
-					}
 				}
 			}
 		});
@@ -151,17 +133,11 @@ public class RotateLayersPanel extends JPanel
 				if (id != null)
 				{
 					if (id[3] == 0 || id[3] == 2 || id[3] == 4)
-					{
 						appController.rotateLayer(1, id[5], 3);
-					}
 					else if (id[3] == 1)
-					{
 						appController.rotateLayer(0, id[5], 3);
-					}
 					else if (id[3] == 3)
-					{
 						appController.rotateLayer(0, id[5], 1);
-					}
 				}
 			}
 		});

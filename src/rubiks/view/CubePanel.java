@@ -75,6 +75,19 @@ public class CubePanel extends JPanel
 			facePanels[i].updateColors();
 		}
 	}
+	
+	public void detectVictory()
+	{
+		int winCondition = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			winCondition += facePanels[i].detectVictory();
+		}
+		if (winCondition >= 5)
+		{
+			cubeInfoPanel.victory();
+		}
+	}
 
 	/**
 	 * @return the cubeInfoPanel

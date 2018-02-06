@@ -61,25 +61,26 @@ public class CubeInfoPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent event)
 			{
-				if (!time.getText().equals("99:59:59:9"))
+				deciseconds++;
+				if (deciseconds > 9)
 				{
-					deciseconds++;
-					if (deciseconds > 9)
+					deciseconds = 0;
+					seconds++;
+					if (seconds > 59)
 					{
-						deciseconds = 0;
-						seconds++;
-						if (seconds > 59)
+						seconds = 0;
+						minutes++;
+						if (minutes > 59)
 						{
-							seconds = 0;
-							minutes++;
-							if (minutes > 59)
-							{
-								minutes = 0;
-								hours++;
-							}
+							minutes = 0;
+							hours++;
 						}
 					}
-					time.setText(timeFormat.format(hours) + ":" + timeFormat.format(minutes) + ":" + timeFormat.format(seconds) + "." + deciseconds);
+				}
+				time.setText(timeFormat.format(hours) + ":" + timeFormat.format(minutes) + ":" + timeFormat.format(seconds) + "." + deciseconds);
+				if (hours == 99 && minutes == 59 && seconds == 59 && deciseconds == 9)
+				{
+					timer.stop();
 				}
 			}
 		});
@@ -134,12 +135,16 @@ public class CubeInfoPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.NORTH, moves, 0, SpringLayout.SOUTH, timePB);
 		springLayout.putConstraint(SpringLayout.NORTH, movesPB, 0, SpringLayout.SOUTH, moves);
 	}
-	
+
 	public void startGame()
 	{
 		timer.stop();
 		time.setText("00:00:00.0");
 		moves.setText("Moves: 000000");
+		deciseconds = 0;
+		seconds = 0;
+		minutes = 0;
+		hours = 0;
 		moveCount = 0;
 		gameStart = true;
 	}
@@ -148,19 +153,33 @@ public class CubeInfoPanel extends JPanel
 	{
 		if (gameStart)
 		{
-			moveCount++;
-			moves.setText("Moves: " + movesFormat.format(moveCount));
-			if (moveCount == 1)
+			if (moveCount < 999999)
 			{
-				timer.start();
+				moveCount++;
+				moves.setText("Moves: " + movesFormat.format(moveCount));
+				if (moveCount == 1)
+				{
+					timer.start();
+				}
 			}
 		}
 	}
-	
+
 	public void quitGame()
 	{
 		startGame();
 		gameStart = false;
+	}
+
+	public void victory()
+	{
+		gameStart = false;
+		timer.stop();
+		String tempTime = time.getText();
+		String tempTimePB = timePB.getText().substring(15, 25);
+		tempTime.replaceAll(":", "");
+		tempTimePB.replaceAll(":", "");
+
 	}
 
 	/**

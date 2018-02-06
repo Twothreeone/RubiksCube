@@ -77,4 +77,17 @@ public abstract class FacePanel extends JPanel
 		}
 		return null;
 	}
+	
+	public int detectVictory()
+	{
+		Color testColor = buttonArray[0].getBackground();
+		for (RubiksButton button : buttonArray)
+		{
+			if (!button.getBackground().equals(testColor))
+			{
+				return 0;
+			}
+		}
+		return 1;
+	}
 }
