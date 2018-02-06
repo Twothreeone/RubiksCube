@@ -177,9 +177,17 @@ public class CubeInfoPanel extends JPanel
 		timer.stop();
 		String tempTime = time.getText();
 		String tempTimePB = timePB.getText().substring(15, 25);
-		tempTime.replaceAll(":", "");
-		tempTimePB.replaceAll(":", "");
-
+		tempTime = tempTime.replaceAll(":", "");
+		tempTimePB = tempTimePB.replaceAll(":", "");
+		if (Double.parseDouble(tempTime) < Double.parseDouble(tempTimePB))
+		{
+			timePB.setText("Personal Best: " + time.getText());
+		}
+		int tempMovesPB = Integer.parseInt(movesPB.getText().substring(19, 25));
+		if (moveCount < tempMovesPB)
+		{
+			movesPB.setText("Personal Best:     " + movesFormat.format(moveCount));
+		}
 	}
 
 	/**
