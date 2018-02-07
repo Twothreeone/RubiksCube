@@ -83,6 +83,14 @@ public class RubiksController
 	}
 	
 	/**
+	 * @return the appFrame
+	 */
+	public RubiksFrame getAppFrame()
+	{
+		return appFrame;
+	}
+
+	/**
 	 * @return the cube
 	 */
 	public RubiksPiece[][][] getCube()

@@ -122,6 +122,7 @@ public class RubiksFrame extends JFrame
 		cubePanel = new CubePanel(appController);
 		this.setContentPane(cubePanel);
 		this.revalidate();
+		VictoryFrame thing = new VictoryFrame(appController);
 	}
 
 	public void menu()
