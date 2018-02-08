@@ -25,7 +25,7 @@ public class RotateLayersPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		panelLabel = new JButton();
+		panelLabel = new JButton("<html>Rotate<br/>Layers</html>");
 		up = new JButton();
 		right = new JButton();
 		down = new JButton();
@@ -45,7 +45,6 @@ public class RotateLayersPanel extends JPanel
 		this.add(right);
 		this.add(new JLabel());
 		this.add(down);
-		panelLabel.setText("<html>Rotate<br/>Layers</html>");
 		panelLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		panelLabel.setOpaque(true);
 		panelLabel.setBorder(new LineBorder(Color.WHITE, 3));
