@@ -43,6 +43,7 @@ public class VictoryPanel extends JPanel
 		leftPurpleFireworks.setHorizontalAlignment(SwingConstants.CENTER);
 		rightPurpleFireworks.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/purpleFireworks.gif")));
 		rightPurpleFireworks.setHorizontalAlignment(SwingConstants.CENTER);
+		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 	
 	private void setupLayout()
