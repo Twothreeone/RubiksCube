@@ -15,8 +15,6 @@ public class RubiksController
 	public RubiksController()
 	{
 		appFrame = new RubiksFrame(this);
-		cube = FileController.readCubesFromFile();
-		System.out.println(cube.getMoveCount());
 	}
 
 	public void loadCube(int size)
