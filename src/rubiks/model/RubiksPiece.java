@@ -1,6 +1,8 @@
 package rubiks.model;
 
-public class RubiksPiece
+import java.io.Serializable;
+
+public class RubiksPiece implements Serializable
 {
 	private int[][] colorsAndOrientation;
 

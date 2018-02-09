@@ -19,13 +19,16 @@ public class RubiksController
 
 	public void loadCube(int size)
 	{
-		cube = new RubiksCube();
+		cube = FileController.readCubesFromFile();
 		appFrame.loadCube(size);
 		appFrame.requestFocus();
+		updateInfoPanel();
 	}
 
 	public void menu()
 	{
+		appFrame.getCubePanel().getCubeInfoPanel().updateCube();
+		FileController.saveCubesToFile(cube);
 		appFrame.menu();
 		appFrame.requestFocus();
 	}
