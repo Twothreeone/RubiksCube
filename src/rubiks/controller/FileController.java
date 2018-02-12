@@ -13,7 +13,7 @@ public class FileController
 {
 	public static void saveCubesToFile(RubiksCube cubes)
 	{
-		File file = new File("cubes.txt");
+		File file = new File("cubes.rbk");
 		try
 		{
 			FileOutputStream fileStream = new FileOutputStream(file);
@@ -34,7 +34,7 @@ public class FileController
 	public static RubiksCube readCubesFromFile()
 	{
 		RubiksCube cubes = new RubiksCube();
-		File file = new File("cubes.txt");
+		File file = new File("cubes.rbk");
 		try
 		{
 			FileInputStream fileStream = new FileInputStream(file);
