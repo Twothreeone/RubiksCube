@@ -192,6 +192,10 @@ public class CubeInfoPanel extends JPanel
 
 	public void updateCube()
 	{
+		if (!gameStart)
+		{
+			quitGame();
+		}
 		appController.updateCube(time.getText(), timePB.getText(), moves.getText(), movesPB.getText(), deciseconds, seconds, minutes, hours, moveCount, gameStart);
 	}
 
@@ -204,8 +208,8 @@ public class CubeInfoPanel extends JPanel
 		this.deciseconds = deciseconds;
 		this.seconds = seconds;
 		this.minutes = minutes;
-		this. hours = hours;
-		this. moveCount = moveCount;
+		this.hours = hours;
+		this.moveCount = moveCount;
 		this.gameStart = gameStart;
 	}
 

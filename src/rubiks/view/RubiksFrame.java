@@ -4,6 +4,8 @@ import rubiks.controller.RubiksController;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 public class RubiksFrame extends JFrame
@@ -11,6 +13,7 @@ public class RubiksFrame extends JFrame
 	private RubiksController appController;
 	private MenuPanel menuPanel;
 	private CubePanel cubePanel;
+	private VictoryFrame victoryFrame;
 
 	/**
 	 * Constructor for the RubiksFrame, sets the data members and sets up the frame.
@@ -115,6 +118,18 @@ public class RubiksFrame extends JFrame
 					appController.rotateCube(0, 1);
 			}
 		});
+		this.addWindowListener(new WindowAdapter()
+		{
+			public void windowActivated(WindowEvent event)
+			{
+				
+			}
+			
+			public void windowClosed(WindowEvent event)
+			{
+				
+			}
+		});
 	}
 
 	public void loadCube(int size)
@@ -122,7 +137,6 @@ public class RubiksFrame extends JFrame
 		cubePanel = new CubePanel(appController);
 		this.setContentPane(cubePanel);
 		this.revalidate();
-		VictoryFrame thing = new VictoryFrame(appController);
 	}
 
 	public void menu()
