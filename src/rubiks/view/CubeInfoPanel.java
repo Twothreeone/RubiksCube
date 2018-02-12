@@ -188,6 +188,7 @@ public class CubeInfoPanel extends JPanel
 		{
 			movesPB.setText("Personal Best:     " + movesFormat.format(moveCount));
 		}
+		appController.victory();
 	}
 
 	public void updateCube()

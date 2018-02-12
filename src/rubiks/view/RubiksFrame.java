@@ -37,7 +37,6 @@ public class RubiksFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(menuPanel);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(900, 900);
 		this.setTitle("Rubik's Cube");
 		this.setBackground(Color.BLACK);
@@ -120,14 +119,14 @@ public class RubiksFrame extends JFrame
 		});
 		this.addWindowListener(new WindowAdapter()
 		{
-			public void windowActivated(WindowEvent event)
+			public void windowActivated(WindowEvent e)
 			{
-				
+				disposeVictoryFrame();
 			}
 			
-			public void windowClosed(WindowEvent event)
+			public void windowClosing(WindowEvent e)
 			{
-				
+				appController.exit();
 			}
 		});
 	}
@@ -141,8 +140,23 @@ public class RubiksFrame extends JFrame
 
 	public void menu()
 	{
+		disposeVictoryFrame();
 		this.setContentPane(menuPanel);
 		this.revalidate();
+	}
+	
+	public void victory()
+	{
+		victoryFrame = new VictoryFrame(appController);
+	}
+	
+	public void disposeVictoryFrame()
+	{
+		if (victoryFrame != null)
+		{
+			victoryFrame.dispose();
+			victoryFrame = null;
+		}
 	}
 
 	/**

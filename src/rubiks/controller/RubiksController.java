@@ -35,6 +35,7 @@ public class RubiksController
 
 	public void scramble()
 	{
+		appFrame.disposeVictoryFrame();
 		for (int i = 0; i < 10000; i++)
 		{
 			cube.rotateLayer((int) (Math.random() * 3), (int) (Math.random() * 3), (int) (Math.random() * 3) + 1);
@@ -103,6 +104,20 @@ public class RubiksController
 	{
 		appFrame.getCubePanel().getCubeInfoPanel().updateInfoPanel(cube.getTime(), cube.getTimePB(), cube.getMoves(), cube.getMovesPB(), cube.getDeciseconds(), cube.getSeconds(), cube.getMinutes(),
 				cube.getHours(), cube.getMoveCount(), cube.isGameStart());
+	}
+
+	public void victory()
+	{
+		appFrame.victory();
+	}
+
+	public void exit()
+	{
+		if (cube != null)
+		{
+			FileController.saveCubesToFile(cube);
+		}
+		System.exit(0);
 	}
 
 	/**

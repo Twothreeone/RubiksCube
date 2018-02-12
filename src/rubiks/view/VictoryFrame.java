@@ -20,6 +20,7 @@ public class VictoryFrame extends JFrame
 	{
 		super();
 		this.appController = appController;
+		victoryPanel = new VictoryPanel(appController);
 		setupFrame();
 	}
 
