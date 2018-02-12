@@ -1,13 +1,35 @@
 package rubiks.model;
 
-public class RubiksCube
+import java.io.Serializable;
+
+public class RubiksCube implements Serializable
 {
 	private RubiksPiece[][][] cube;
+	private String time;
+	private String timePB;
+	private String moves;
+	private String movesPB;
+	private int deciseconds;
+	private int seconds;
+	private int minutes;
+	private int hours;
+	private int moveCount;
+	private boolean gameStart;
 	private final int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } };
 
 	public RubiksCube()
 	{
 		cube = new RubiksPiece[3][3][3];
+		time = "00:00:00.0";
+		timePB = "Personal Best: 99:59:59.9";
+		moves = "Moves: 000000";
+		movesPB = "Personal Best:     999999";
+		deciseconds = 0;
+		seconds = 0;
+		minutes = 0;
+		hours = 0;
+		moveCount = 0;
+		gameStart = false;
 		setupCube();
 	}
 
@@ -150,5 +172,165 @@ public class RubiksCube
 	public RubiksPiece[][][] getCube()
 	{
 		return cube;
+	}
+
+	/**
+	 * @return the time
+	 */
+	public String getTime()
+	{
+		return time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(String time)
+	{
+		this.time = time;
+	}
+
+	/**
+	 * @return the timePB
+	 */
+	public String getTimePB()
+	{
+		return timePB;
+	}
+
+	/**
+	 * @param timePB the timePB to set
+	 */
+	public void setTimePB(String timePB)
+	{
+		this.timePB = timePB;
+	}
+
+	/**
+	 * @return the moves
+	 */
+	public String getMoves()
+	{
+		return moves;
+	}
+
+	/**
+	 * @param moves the moves to set
+	 */
+	public void setMoves(String moves)
+	{
+		this.moves = moves;
+	}
+
+	/**
+	 * @return the movesPB
+	 */
+	public String getMovesPB()
+	{
+		return movesPB;
+	}
+
+	/**
+	 * @param movesPB the movesPB to set
+	 */
+	public void setMovesPB(String movesPB)
+	{
+		this.movesPB = movesPB;
+	}
+
+	/**
+	 * @return the deciseconds
+	 */
+	public int getDeciseconds()
+	{
+		return deciseconds;
+	}
+
+	/**
+	 * @param deciseconds the deciseconds to set
+	 */
+	public void setDeciseconds(int deciseconds)
+	{
+		this.deciseconds = deciseconds;
+	}
+
+	/**
+	 * @return the seconds
+	 */
+	public int getSeconds()
+	{
+		return seconds;
+	}
+
+	/**
+	 * @param seconds the seconds to set
+	 */
+	public void setSeconds(int seconds)
+	{
+		this.seconds = seconds;
+	}
+
+	/**
+	 * @return the minutes
+	 */
+	public int getMinutes()
+	{
+		return minutes;
+	}
+
+	/**
+	 * @param minutes the minutes to set
+	 */
+	public void setMinutes(int minutes)
+	{
+		this.minutes = minutes;
+	}
+
+	/**
+	 * @return the hours
+	 */
+	public int getHours()
+	{
+		return hours;
+	}
+
+	/**
+	 * @param hours the hours to set
+	 */
+	public void setHours(int hours)
+	{
+		this.hours = hours;
+	}
+
+	/**
+	 * @return the moveCount
+	 */
+	public int getMoveCount()
+	{
+		return moveCount;
+	}
+
+	/**
+	 * @param moveCount the moveCount to set
+	 */
+	public void setMoveCount(int moveCount)
+	{
+		this.moveCount = moveCount;
+	}
+
+	/**
+	 * @return the gameStart
+	 */
+	public boolean isGameStart()
+	{
+		return gameStart;
+	}
+
+	/**
+	 * @param gameStart the gameStart to set
+	 */
+	public void setGameStart(boolean gameStart)
+	{
+		this.gameStart = gameStart;
 	}
 }

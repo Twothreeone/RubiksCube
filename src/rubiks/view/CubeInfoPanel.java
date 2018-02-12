@@ -157,7 +157,7 @@ public class CubeInfoPanel extends JPanel
 			{
 				moveCount++;
 				moves.setText("Moves: " + movesFormat.format(moveCount));
-				if (moveCount == 1)
+				if (!timer.isRunning())
 				{
 					timer.start();
 				}
@@ -188,6 +188,29 @@ public class CubeInfoPanel extends JPanel
 		{
 			movesPB.setText("Personal Best:     " + movesFormat.format(moveCount));
 		}
+	}
+
+	public void updateCube()
+	{
+		if (!gameStart)
+		{
+			quitGame();
+		}
+		appController.updateCube(time.getText(), timePB.getText(), moves.getText(), movesPB.getText(), deciseconds, seconds, minutes, hours, moveCount, gameStart);
+	}
+
+	public void updateInfoPanel(String time, String timePB, String moves, String movesPB, int deciseconds, int seconds, int minutes, int hours, int moveCount, boolean gameStart)
+	{
+		this.time.setText(time);
+		this.timePB.setText(timePB);
+		this.moves.setText(moves);
+		this.movesPB.setText(movesPB);
+		this.deciseconds = deciseconds;
+		this.seconds = seconds;
+		this.minutes = minutes;
+		this.hours = hours;
+		this.moveCount = moveCount;
+		this.gameStart = gameStart;
 	}
 
 	/**
