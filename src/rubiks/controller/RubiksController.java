@@ -115,6 +115,7 @@ public class RubiksController
 	{
 		if (cube != null)
 		{
+			appFrame.getCubePanel().getCubeInfoPanel().updateCube();
 			FileController.saveCubesToFile(cube);
 		}
 		System.exit(0);
