@@ -38,4 +38,9 @@ public class VictoryFrame extends JFrame
 		this.setResizable(false);
 		this.setVisible(true);
 	}
+	
+	public void reportPB(String pb)
+	{
+		victoryPanel.reportPB(pb);
+	}
 }

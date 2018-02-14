@@ -175,6 +175,7 @@ public class CubeInfoPanel extends JPanel
 	{
 		gameStart = false;
 		timer.stop();
+		appController.victory();
 		String tempTime = time.getText();
 		String tempTimePB = timePB.getText().substring(15, 25);
 		tempTime = tempTime.replaceAll(":", "");
@@ -182,13 +183,14 @@ public class CubeInfoPanel extends JPanel
 		if (Double.parseDouble(tempTime) < Double.parseDouble(tempTimePB))
 		{
 			timePB.setText("Personal Best: " + time.getText());
+			appController.reportPB(time.getText());
 		}
 		int tempMovesPB = Integer.parseInt(movesPB.getText().substring(19, 25));
 		if (moveCount < tempMovesPB)
 		{
 			movesPB.setText("Personal Best:     " + movesFormat.format(moveCount));
+			appController.reportPB(moveCount + "");
 		}
-		appController.victory();
 	}
 
 	public void updateCube()

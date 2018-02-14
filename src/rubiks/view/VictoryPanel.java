@@ -21,6 +21,8 @@ public class VictoryPanel extends JPanel
 	private SpringLayout springLayout;
 	private JLabel solved;
 	private JLabel greenFireworks;
+	private JLabel pb1;
+	private JLabel pb2;
 	private JButton menu;
 	private JButton tryAgain;
 
@@ -31,6 +33,9 @@ public class VictoryPanel extends JPanel
 		springLayout = new SpringLayout();
 		solved = new JLabel("You Solved It!");
 		greenFireworks = new JLabel();
+		springLayout.putConstraint(SpringLayout.NORTH, greenFireworks, 0, SpringLayout.NORTH, this);
+		pb1 = new JLabel("0000000000000000000000000000000000000000000000000000000000000");
+		pb2 = new JLabel("1111111111111111111111111111111111111111111111111111111111111");
 		menu = new JButton("Menu");
 		tryAgain = new JButton("Try Again");
 		setupPanel();
@@ -43,6 +48,8 @@ public class VictoryPanel extends JPanel
 		this.setLayout(springLayout);
 		this.add(solved);
 		this.add(greenFireworks);
+		this.add(pb1);
+		this.add(pb2);
 		this.add(menu);
 		this.add(tryAgain);
 		solved.setHorizontalAlignment(SwingConstants.CENTER);
@@ -50,6 +57,12 @@ public class VictoryPanel extends JPanel
 		solved.setForeground(Color.WHITE);
 		greenFireworks.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/greenFireworks.gif")));
 		greenFireworks.setHorizontalAlignment(SwingConstants.CENTER);
+		pb1.setHorizontalAlignment(SwingConstants.CENTER);
+		pb1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
+		pb1.setForeground(Color.WHITE);
+		pb2.setHorizontalAlignment(SwingConstants.CENTER);
+		pb2.setFont(new Font("Lucida Grande", Font.BOLD, 40));
+		pb2.setForeground(Color.WHITE);
 		menu.setBorder(new LineBorder(Color.BLACK, 5));
 		menu.setForeground(Color.WHITE);
 		menu.setFont(new Font("Lucida Grande", Font.BOLD, 35));
@@ -64,10 +77,13 @@ public class VictoryPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.WEST, solved, 0, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, solved, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, solved, 0, SpringLayout.EAST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, greenFireworks, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, greenFireworks, 0, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, greenFireworks, 0, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, greenFireworks, 0, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, pb1, 0, SpringLayout.SOUTH, solved);
+		springLayout.putConstraint(SpringLayout.EAST, pb1, 0, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, pb2, 0, SpringLayout.SOUTH, pb1);
+		springLayout.putConstraint(SpringLayout.EAST, pb2, 0, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, menu, 400, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, menu, 20, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, menu, -20, SpringLayout.SOUTH, this);
@@ -139,5 +155,10 @@ public class VictoryPanel extends JPanel
 				tryAgain.setBorder(new LineBorder(Color.BLACK, 5));
 			}
 		});
+	}
+	
+	public void reportPB(String pb)
+	{
+		
 	}
 }

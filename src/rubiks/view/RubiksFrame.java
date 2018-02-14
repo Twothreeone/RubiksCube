@@ -150,6 +150,14 @@ public class RubiksFrame extends JFrame
 		victoryFrame = new VictoryFrame(appController);
 	}
 	
+	public void reportPB(String pb)
+	{
+		if (victoryFrame != null)
+		{
+			victoryFrame.reportPB(pb);
+		}
+	}
+	
 	public void disposeVictoryFrame()
 	{
 		if (victoryFrame != null)
