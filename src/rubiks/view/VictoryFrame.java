@@ -34,7 +34,7 @@ public class VictoryFrame extends JFrame
 		this.setLocation(this.getX() - 250, this.getY() - 250);
 		this.setUndecorated(true);
 		this.setSize(500, 500);
-		this.setBackground(new Color(100, 100, 100, 240));
+		this.setBackground(new Color(100, 100, 100, 245));
 		this.setResizable(false);
 		this.setVisible(true);
 	}
