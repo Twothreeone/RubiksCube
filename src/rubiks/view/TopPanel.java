@@ -14,9 +14,9 @@ public class TopPanel extends FacePanel
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
-		for (int i = 2; i > -1; i--)
+		for (int i = appController.getSize() - 1; i > -1; i--)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < appController.getSize(); j++)
 			{
 				this.buttonArray[arrayIndex].setID(new int[] { i, 0, j, 1, j, i });
 				arrayIndex++;

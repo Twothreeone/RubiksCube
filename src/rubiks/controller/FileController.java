@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 
 public class FileController
 {
-	public static void saveCubesToFile(RubiksCube cubes)
+	public static void saveCubesToFile(RubiksCube[] cubes)
 	{
 		File file = new File("cubes.rbk");
 		try
@@ -31,15 +31,15 @@ public class FileController
 		}
 	}
 	
-	public static RubiksCube readCubesFromFile()
+	public static RubiksCube[] readCubesFromFile()
 	{
-		RubiksCube cubes = new RubiksCube(3);
+		RubiksCube[] cubes = {null, null, new RubiksCube(2), new RubiksCube(3)};
 		File file = new File("cubes.rbk");
 		try
 		{
 			FileInputStream fileStream = new FileInputStream(file);
 			ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-			cubes = (RubiksCube) objectStream.readObject();
+			cubes = (RubiksCube[]) objectStream.readObject();
 			objectStream.close();
 		}
 		catch (FileNotFoundException error)

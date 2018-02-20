@@ -28,7 +28,7 @@ public class RubiksButton extends JButton
 	private void setupButton()
 	{
 		this.setOpaque(true);
-		this.setBorder(new LineBorder(Color.BLACK, 5));
+		this.setBorder(new LineBorder(Color.BLACK, 10 / appController.getSize() + 1));
 	}
 	
 	private void setupListeners()
@@ -38,7 +38,7 @@ public class RubiksButton extends JButton
 			public void actionPerformed(ActionEvent click)
 			{
 				appController.deselect();
-				setBorder(new LineBorder(Color.LIGHT_GRAY, 5));
+				setBorder(new LineBorder(Color.LIGHT_GRAY, 10 / appController.getSize() + 1));
 				selected = true;
 			}
 		});
@@ -58,7 +58,7 @@ public class RubiksButton extends JButton
 			{
 				if (!selected)
 				{
-					setBorder(new LineBorder(Color.WHITE, 5));
+					setBorder(new LineBorder(Color.WHITE, 10 / appController.getSize() + 1));
 				}
 			}
 			
@@ -66,7 +66,7 @@ public class RubiksButton extends JButton
 			{
 				if (!selected)
 				{
-					setBorder(new LineBorder(Color.BLACK, 5));
+					setBorder(new LineBorder(Color.BLACK, 10 / appController.getSize() + 1));
 				}
 			}
 		});
@@ -75,7 +75,7 @@ public class RubiksButton extends JButton
 	public void deselect()
 	{
 		selected = false;
-		this.setBorder(new LineBorder(Color.BLACK, 5));
+		this.setBorder(new LineBorder(Color.BLACK, 10 / appController.getSize() + 1));
 	}
 
 	/**

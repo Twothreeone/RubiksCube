@@ -14,11 +14,11 @@ public class RightPanel extends FacePanel
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < appController.getSize(); i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < appController.getSize(); j++)
 			{
-				this.buttonArray[arrayIndex].setID(new int[] { j, i, 2, 2, j, i });
+				this.buttonArray[arrayIndex].setID(new int[] { j, i, appController.getSize() - 1, 2, j, i });
 				arrayIndex++;
 			}
 		}

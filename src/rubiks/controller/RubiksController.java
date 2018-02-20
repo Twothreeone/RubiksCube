@@ -7,7 +7,7 @@ import rubiks.model.RubiksPiece;
 public class RubiksController
 {
 	private RubiksFrame appFrame;
-	private RubiksCube cube;
+	private RubiksCube[] cubes;
 	private int size;
 
 	/**
@@ -21,7 +21,7 @@ public class RubiksController
 	public void loadCube(int size)
 	{
 		this.size = size;
-		cube = FileController.readCubesFromFile();
+		cubes = FileController.readCubesFromFile();
 		appFrame.loadCube();
 		appFrame.requestFocus();
 		updateInfoPanel();
@@ -30,7 +30,7 @@ public class RubiksController
 	public void menu()
 	{
 		appFrame.getCubePanel().getCubeInfoPanel().updateCube();
-		FileController.saveCubesToFile(cube);
+		FileController.saveCubesToFile(cubes);
 		appFrame.menu();
 		appFrame.requestFocus();
 	}
@@ -40,7 +40,7 @@ public class RubiksController
 		appFrame.disposeVictoryFrame();
 		for (int i = 0; i < 1/*0000*/; i++)
 		{
-			cube.rotateLayer((int) (Math.random() * 3), (int) (Math.random() * 3), (int) (Math.random() * 3) + 1);
+			cubes[size].rotateLayer((int) (Math.random() * 3), (int) (Math.random() * size), (int) (Math.random() * 3) + 1);
 			appFrame.getCubePanel().updateColors();
 		}
 		appFrame.getCubePanel().getCubeInfoPanel().startGame();
@@ -49,7 +49,7 @@ public class RubiksController
 
 	public void solve()
 	{
-		cube = new RubiksCube(size);
+		cubes[size] = new RubiksCube(size);
 		appFrame.getCubePanel().updateColors();
 		appFrame.getCubePanel().getCubeInfoPanel().quitGame();
 		appFrame.requestFocus();
@@ -72,7 +72,7 @@ public class RubiksController
 		{
 			appFrame.getCubePanel().getCubeInfoPanel().incrementMoves();
 		}
-		cube.rotateLayer(direction, layer, amount);
+		cubes[size].rotateLayer(direction, layer, amount);
 		appFrame.getCubePanel().updateColors();
 		appFrame.requestFocus();
 		if (appFrame.getCubePanel().getCubeInfoPanel().isGameStart())
@@ -83,29 +83,29 @@ public class RubiksController
 
 	public void rotateCube(int direction, int amount)
 	{
-		cube.rotateCube(direction, amount);
+		cubes[size].rotateCube(direction, amount);
 		appFrame.getCubePanel().updateColors();
 		appFrame.requestFocus();
 	}
 
 	public void updateCube(String time, String timePB, String moves, String movesPB, int deciseconds, int seconds, int minutes, int hours, int moveCount, boolean gameStart)
 	{
-		cube.setTime(time);
-		cube.setTimePB(timePB);
-		cube.setMoves(moves);
-		cube.setMovesPB(movesPB);
-		cube.setDeciseconds(deciseconds);
-		cube.setSeconds(seconds);
-		cube.setMinutes(minutes);
-		cube.setHours(hours);
-		cube.setMoveCount(moveCount);
-		cube.setGameStart(gameStart);
+		cubes[size].setTime(time);
+		cubes[size].setTimePB(timePB);
+		cubes[size].setMoves(moves);
+		cubes[size].setMovesPB(movesPB);
+		cubes[size].setDeciseconds(deciseconds);
+		cubes[size].setSeconds(seconds);
+		cubes[size].setMinutes(minutes);
+		cubes[size].setHours(hours);
+		cubes[size].setMoveCount(moveCount);
+		cubes[size].setGameStart(gameStart);
 	}
 
 	public void updateInfoPanel()
 	{
-		appFrame.getCubePanel().getCubeInfoPanel().updateInfoPanel(cube.getTime(), cube.getTimePB(), cube.getMoves(), cube.getMovesPB(), cube.getDeciseconds(), cube.getSeconds(), cube.getMinutes(),
-				cube.getHours(), cube.getMoveCount(), cube.isGameStart());
+		appFrame.getCubePanel().getCubeInfoPanel().updateInfoPanel(cubes[size].getTime(), cubes[size].getTimePB(), cubes[size].getMoves(), cubes[size].getMovesPB(), cubes[size].getDeciseconds(), cubes[size].getSeconds(), cubes[size].getMinutes(),
+				cubes[size].getHours(), cubes[size].getMoveCount(), cubes[size].isGameStart());
 	}
 
 	public void victory()
@@ -115,10 +115,10 @@ public class RubiksController
 
 	public void exit()
 	{
-		if (cube != null)
+		if (cubes != null)
 		{
 			appFrame.getCubePanel().getCubeInfoPanel().updateCube();
-			FileController.saveCubesToFile(cube);
+			FileController.saveCubesToFile(cubes);
 		}
 		System.exit(0);
 	}
@@ -149,6 +149,6 @@ public class RubiksController
 	 */
 	public RubiksPiece[][][] getCube()
 	{
-		return cube.getCube();
+		return cubes[size].getCube();
 	}
 }

@@ -72,6 +72,7 @@ public class VictoryPanel extends JPanel
 		tryAgain.setBorder(new LineBorder(Color.BLACK, 5));
 		tryAgain.setForeground(Color.WHITE);
 		tryAgain.setFont(new Font("Lucida Grande", Font.BOLD, 35));
+		this.setBackground(new Color(100, 100, 100, 245));
 		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 

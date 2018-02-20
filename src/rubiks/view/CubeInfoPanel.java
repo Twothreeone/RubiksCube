@@ -39,7 +39,7 @@ public class CubeInfoPanel extends JPanel
 		timeFormat = new DecimalFormat("00");
 		movesFormat = new DecimalFormat("000000");
 		springLayout = new SpringLayout();
-		cubeType = new JLabel("3x3x3");
+		cubeType = new JLabel(appController.getSize() + "x" + appController.getSize() + "x" + appController.getSize());
 		time = new JLabel("00:00:00.0");
 		timePB = new JLabel("Personal Best: 99:59:59.9");
 		moves = new JLabel("Moves: 000000");

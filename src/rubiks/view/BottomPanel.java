@@ -14,11 +14,11 @@ public class BottomPanel extends FacePanel
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < appController.getSize(); i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < appController.getSize(); j++)
 			{
-				this.buttonArray[arrayIndex].setID(new int[] { i, 2, j, 3, j, i });
+				this.buttonArray[arrayIndex].setID(new int[] { i, appController.getSize() - 1, j, 3, j, i });
 				arrayIndex++;
 			}
 		}

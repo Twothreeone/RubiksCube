@@ -16,7 +16,8 @@ public class RubiksCube implements Serializable
 	private int hours;
 	private int moveCount;
 	private boolean gameStart;
-	private final int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } };
+	private final int[][][] rotation = { {}, {}, { { 0, 0, 1, 0 }, { 0, 1, 0, 0 }, { 1, 1, 0, 1 }, { 1, 0, 1, 1 } },
+			{ { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } } };
 
 	public RubiksCube(int size)
 	{
@@ -166,21 +167,21 @@ public class RubiksCube implements Serializable
 		{
 			if (direction == 0)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < size; j++)
 				{
 					rotateFSB(j);
 				}
 			}
 			else if (direction == 1)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < size; j++)
 				{
 					rotateUED(j);
 				}
 			}
 			else if (direction == 2)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < size; j++)
 				{
 					rotateLMR(j);
 				}
@@ -191,45 +192,45 @@ public class RubiksCube implements Serializable
 	private void rotateFSB(int layer)
 	{
 		int[][] orientationToSet = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
-		for (int i = 0; i < rotation.length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[layer][rotation[i][0]][rotation[i][1]].setOrientation(fixOrientation(cube[layer][rotation[i][0]][rotation[i][1]].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[layer][rotation[i][2]][rotation[i][3]];
+			cube[layer][rotation[size][i][0]][rotation[size][i][1]].setOrientation(fixOrientation(cube[layer][rotation[size][i][0]][rotation[size][i][1]].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[layer][rotation[size][i][2]][rotation[size][i][3]];
 		}
-		for (int i = 0; i < rotation.length; i++)
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[layer][rotation[i][0]][rotation[i][1]] = tempLayer[i];
+			cube[layer][rotation[size][i][0]][rotation[size][i][1]] = tempLayer[i];
 		}
 	}
 
 	private void rotateUED(int layer)
 	{
 		int[][] orientationToSet = { { 0, 2 }, { 2, 5 }, { 5, 4 }, { 4, 0 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
-		for (int i = 0; i < rotation.length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[rotation[i][0]][layer][rotation[i][1]].setOrientation(fixOrientation(cube[rotation[i][0]][layer][rotation[i][1]].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[rotation[i][2]][layer][rotation[i][3]];
+			cube[rotation[size][i][0]][layer][rotation[size][i][1]].setOrientation(fixOrientation(cube[rotation[size][i][0]][layer][rotation[size][i][1]].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[rotation[size][i][2]][layer][rotation[size][i][3]];
 		}
-		for (int i = 0; i < rotation.length; i++)
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[rotation[i][0]][layer][rotation[i][1]] = tempLayer[i];
+			cube[rotation[size][i][0]][layer][rotation[size][i][1]] = tempLayer[i];
 		}
 	}
 
 	private void rotateLMR(int layer)
 	{
 		int[][] orientationToSet = { { 0, 1 }, { 1, 5 }, { 5, 3 }, { 3, 0 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
-		for (int i = 0; i < rotation.length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[rotation[i][1]][rotation[i][0]][layer].setOrientation(fixOrientation(cube[rotation[i][1]][rotation[i][0]][layer].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[rotation[i][3]][rotation[i][2]][layer];
+			cube[rotation[size][i][1]][rotation[size][i][0]][layer].setOrientation(fixOrientation(cube[rotation[size][i][1]][rotation[size][i][0]][layer].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[rotation[size][i][3]][rotation[size][i][2]][layer];
 		}
-		for (int i = 0; i < rotation.length; i++)
+		for (int i = 0; i < rotation[size].length; i++)
 		{
-			cube[rotation[i][1]][rotation[i][0]][layer] = tempLayer[i];
+			cube[rotation[size][i][1]][rotation[size][i][0]][layer] = tempLayer[i];
 		}
 	}
 
@@ -266,7 +267,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param time the time to set
+	 * @param time
+	 *            the time to set
 	 */
 	public void setTime(String time)
 	{
@@ -282,7 +284,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param timePB the timePB to set
+	 * @param timePB
+	 *            the timePB to set
 	 */
 	public void setTimePB(String timePB)
 	{
@@ -298,7 +301,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param moves the moves to set
+	 * @param moves
+	 *            the moves to set
 	 */
 	public void setMoves(String moves)
 	{
@@ -314,7 +318,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param movesPB the movesPB to set
+	 * @param movesPB
+	 *            the movesPB to set
 	 */
 	public void setMovesPB(String movesPB)
 	{
@@ -330,7 +335,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param deciseconds the deciseconds to set
+	 * @param deciseconds
+	 *            the deciseconds to set
 	 */
 	public void setDeciseconds(int deciseconds)
 	{
@@ -346,7 +352,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param seconds the seconds to set
+	 * @param seconds
+	 *            the seconds to set
 	 */
 	public void setSeconds(int seconds)
 	{
@@ -362,7 +369,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param minutes the minutes to set
+	 * @param minutes
+	 *            the minutes to set
 	 */
 	public void setMinutes(int minutes)
 	{
@@ -378,7 +386,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param hours the hours to set
+	 * @param hours
+	 *            the hours to set
 	 */
 	public void setHours(int hours)
 	{
@@ -394,7 +403,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param moveCount the moveCount to set
+	 * @param moveCount
+	 *            the moveCount to set
 	 */
 	public void setMoveCount(int moveCount)
 	{
@@ -410,7 +420,8 @@ public class RubiksCube implements Serializable
 	}
 
 	/**
-	 * @param gameStart the gameStart to set
+	 * @param gameStart
+	 *            the gameStart to set
 	 */
 	public void setGameStart(boolean gameStart)
 	{

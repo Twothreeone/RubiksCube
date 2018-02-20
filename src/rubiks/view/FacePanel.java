@@ -22,8 +22,8 @@ public abstract class FacePanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		buttonArray = new RubiksButton[9];
-		for (int i = 0; i < 9; i++)
+		buttonArray = new RubiksButton[appController.getSize() * appController.getSize()];
+		for (int i = 0; i < buttonArray.length; i++)
 		{
 			buttonArray[i] = new RubiksButton(appController);
 		}
@@ -32,8 +32,8 @@ public abstract class FacePanel extends JPanel
 
 	private void setupPanel()
 	{
-		this.setLayout(new GridLayout(3, 3));
-		for (int i = 0; i < 9; i++)
+		this.setLayout(new GridLayout(appController.getSize(), appController.getSize()));
+		for (int i = 0; i < buttonArray.length; i++)
 		{
 			this.add(buttonArray[i]);
 		}

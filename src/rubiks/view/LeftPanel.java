@@ -14,9 +14,9 @@ public class LeftPanel extends FacePanel
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < appController.getSize(); i++)
 		{
-			for (int j = 2; j > -1; j--)
+			for (int j = appController.getSize() - 1; j > -1; j--)
 			{
 				this.buttonArray[arrayIndex].setID(new int[] { j, i, 0, 4, j, i });
 				arrayIndex++;

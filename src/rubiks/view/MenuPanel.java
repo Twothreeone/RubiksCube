@@ -11,32 +11,42 @@ import rubiks.controller.RubiksController;
 public class MenuPanel extends JPanel
 {
 	RubiksController appController;
-	JButton three;
-	
+	JButton[] buttons;
+
 	public MenuPanel(RubiksController appController)
 	{
 		super();
 		this.appController = appController;
-		three = new JButton();
+		buttons = new JButton[20];
+		for (int i = 0; i < buttons.length; i++)
+		{
+			buttons[i] = new JButton((i + 2) + "");
+		}
 		setupPanel();
 		setupListeners();
 	}
-	
+
 	private void setupPanel()
 	{
-		this.add(three);
+		for (JButton button : buttons)
+		{
+			this.add(button);
+		}
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
-	
+
 	private void setupListeners()
 	{
-		three.addActionListener(new ActionListener()
+		for (int i = 0; i < buttons.length; i++)
 		{
-			public void actionPerformed(ActionEvent click)
+			buttons[i].addActionListener(new ActionListener()
 			{
-				appController.loadCube(3);
-			}
-		});
+				public void actionPerformed(ActionEvent click)
+				{
+					appController.loadCube(3);
+				}
+			});
+		}
 	}
 }
