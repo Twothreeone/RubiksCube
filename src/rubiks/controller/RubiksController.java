@@ -8,6 +8,7 @@ public class RubiksController
 {
 	private RubiksFrame appFrame;
 	private RubiksCube cube;
+	private int size;
 
 	/**
 	 * Constructor for the RubiksController that creates a RubiksFrame.
@@ -19,8 +20,9 @@ public class RubiksController
 
 	public void loadCube(int size)
 	{
+		this.size = size;
 		cube = FileController.readCubesFromFile();
-		appFrame.loadCube(size);
+		appFrame.loadCube();
 		appFrame.requestFocus();
 		updateInfoPanel();
 	}
@@ -45,9 +47,9 @@ public class RubiksController
 		appFrame.requestFocus();
 	}
 
-	public void solve(int size)
+	public void solve()
 	{
-		cube = new RubiksCube();
+		cube = new RubiksCube(size);
 		appFrame.getCubePanel().updateColors();
 		appFrame.getCubePanel().getCubeInfoPanel().quitGame();
 		appFrame.requestFocus();
@@ -120,12 +122,20 @@ public class RubiksController
 		}
 		System.exit(0);
 	}
-	
+
 	public void reportPB(String pb)
 	{
 		appFrame.reportPB(pb);
 	}
-
+	
+	/**
+	 * @return the size
+	 */
+	public int getSize()
+	{
+		return size;
+	}
+	
 	/**
 	 * @return the appFrame
 	 */

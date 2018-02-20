@@ -33,7 +33,7 @@ public class FileController
 	
 	public static RubiksCube readCubesFromFile()
 	{
-		RubiksCube cubes = new RubiksCube();
+		RubiksCube cubes = new RubiksCube(3);
 		File file = new File("cubes.rbk");
 		try
 		{

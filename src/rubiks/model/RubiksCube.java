@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class RubiksCube implements Serializable
 {
 	private RubiksPiece[][][] cube;
+	private int size;
 	private String time;
 	private String timePB;
 	private String moves;
@@ -17,9 +18,10 @@ public class RubiksCube implements Serializable
 	private boolean gameStart;
 	private final int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } };
 
-	public RubiksCube()
+	public RubiksCube(int size)
 	{
-		cube = new RubiksPiece[3][3][3];
+		this.size = size;
+		cube = new RubiksPiece[size][size][size];
 		time = "00:00:00.0";
 		timePB = "Personal Best: 99:59:59.9";
 		moves = "Moves: 000000";
@@ -35,33 +37,114 @@ public class RubiksCube implements Serializable
 
 	private void setupCube()
 	{
-		cube[1][1][1] = new RubiksPiece(new int[0][0]);
-		cube[0][1][1] = new RubiksPiece(new int[][] { { 0, 0 } });
-		cube[1][0][1] = new RubiksPiece(new int[][] { { 1, 1 } });
-		cube[1][1][2] = new RubiksPiece(new int[][] { { 2, 2 } });
-		cube[1][2][1] = new RubiksPiece(new int[][] { { 3, 3 } });
-		cube[1][1][0] = new RubiksPiece(new int[][] { { 4, 4 } });
-		cube[2][1][1] = new RubiksPiece(new int[][] { { 5, 5 } });
-		cube[0][0][1] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 } });
-		cube[0][1][2] = new RubiksPiece(new int[][] { { 0, 0 }, { 2, 2 } });
-		cube[0][2][1] = new RubiksPiece(new int[][] { { 0, 0 }, { 3, 3 } });
-		cube[0][1][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 4, 4 } });
-		cube[1][0][0] = new RubiksPiece(new int[][] { { 1, 1 }, { 4, 4 } });
-		cube[1][0][2] = new RubiksPiece(new int[][] { { 1, 1 }, { 2, 2 } });
-		cube[1][2][2] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 } });
-		cube[1][2][0] = new RubiksPiece(new int[][] { { 3, 3 }, { 4, 4 } });
-		cube[2][0][1] = new RubiksPiece(new int[][] { { 1, 1 }, { 5, 5 } });
-		cube[2][1][2] = new RubiksPiece(new int[][] { { 2, 2 }, { 5, 5 } });
-		cube[2][2][1] = new RubiksPiece(new int[][] { { 3, 3 }, { 5, 5 } });
-		cube[2][1][0] = new RubiksPiece(new int[][] { { 4, 4 }, { 5, 5 } });
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			for (int row = 1; row < size - 1; row++)
+			{
+				for (int col = 1; col < size - 1; col++)
+				{
+					cube[plane][row][col] = new RubiksPiece(new int[0][0]);
+				}
+			}
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			for (int col = 1; col < size - 1; col++)
+			{
+				cube[0][row][col] = new RubiksPiece(new int[][] { { 0, 0 } });
+			}
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			for (int col = 1; col < size - 1; col++)
+			{
+				cube[plane][0][col] = new RubiksPiece(new int[][] { { 1, 1 } });
+			}
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			for (int row = 1; row < size - 1; row++)
+			{
+				cube[plane][row][size - 1] = new RubiksPiece(new int[][] { { 2, 2 } });
+			}
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			for (int col = 1; col < size - 1; col++)
+			{
+				cube[plane][size - 1][col] = new RubiksPiece(new int[][] { { 3, 3 } });
+			}
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			for (int row = 1; row < size - 1; row++)
+			{
+				cube[plane][row][0] = new RubiksPiece(new int[][] { { 4, 4 } });
+			}
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			for (int col = 1; col < size - 1; col++)
+			{
+				cube[size - 1][row][col] = new RubiksPiece(new int[][] { { 5, 5 } });
+			}
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			cube[plane][0][0] = new RubiksPiece(new int[][] { { 1, 1 }, { 4, 4 } });
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			cube[plane][0][size - 1] = new RubiksPiece(new int[][] { { 1, 1 }, { 2, 2 } });
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			cube[plane][size - 1][0] = new RubiksPiece(new int[][] { { 3, 3 }, { 4, 4 } });
+		}
+		for (int plane = 1; plane < size - 1; plane++)
+		{
+			cube[plane][size - 1][size - 1] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 } });
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			cube[0][row][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 4, 4 } });
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			cube[0][row][size - 1] = new RubiksPiece(new int[][] { { 0, 0 }, { 2, 2 } });
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			cube[size - 1][row][0] = new RubiksPiece(new int[][] { { 4, 4 }, { 5, 5 } });
+		}
+		for (int row = 1; row < size - 1; row++)
+		{
+			cube[size - 1][row][size - 1] = new RubiksPiece(new int[][] { { 2, 2 }, { 5, 5 } });
+		}
+		for (int col = 1; col < size - 1; col++)
+		{
+			cube[0][0][col] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 } });
+		}
+		for (int col = 1; col < size - 1; col++)
+		{
+			cube[0][size - 1][col] = new RubiksPiece(new int[][] { { 0, 0 }, { 3, 3 } });
+		}
+		for (int col = 1; col < size - 1; col++)
+		{
+			cube[size - 1][0][col] = new RubiksPiece(new int[][] { { 1, 1 }, { 5, 5 } });
+		}
+		for (int col = 1; col < size - 1; col++)
+		{
+			cube[size - 1][size - 1][1] = new RubiksPiece(new int[][] { { 3, 3 }, { 5, 5 } });
+		}
 		cube[0][0][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 }, { 4, 4 } });
-		cube[0][0][2] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 }, { 2, 2 } });
-		cube[0][2][2] = new RubiksPiece(new int[][] { { 0, 0 }, { 2, 2 }, { 3, 3 } });
-		cube[0][2][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 3, 3 }, { 4, 4 } });
-		cube[2][0][0] = new RubiksPiece(new int[][] { { 1, 1 }, { 4, 4 }, { 5, 5 } });
-		cube[2][0][2] = new RubiksPiece(new int[][] { { 1, 1 }, { 2, 2 }, { 5, 5 } });
-		cube[2][2][2] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 }, { 5, 5 } });
-		cube[2][2][0] = new RubiksPiece(new int[][] { { 3, 3 }, { 4, 4 }, { 5, 5 } });
+		cube[0][0][size - 1] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 }, { 2, 2 } });
+		cube[0][size - 1][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 3, 3 }, { 4, 4 } });
+		cube[size - 1][0][0] = new RubiksPiece(new int[][] { { 1, 1 }, { 4, 4 }, { 5, 5 } });
+		cube[0][size - 1][size - 1] = new RubiksPiece(new int[][] { { 0, 0 }, { 2, 2 }, { 3, 3 } });
+		cube[size - 1][0][size - 1] = new RubiksPiece(new int[][] { { 1, 1 }, { 2, 2 }, { 5, 5 } });
+		cube[size - 1][size - 1][0] = new RubiksPiece(new int[][] { { 3, 3 }, { 4, 4 }, { 5, 5 } });
+		cube[size - 1][size - 1][size - 1] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 }, { 5, 5 } });
 	}
 
 	public void rotateLayer(int direction, int layer, int amount)

@@ -131,7 +131,7 @@ public class RubiksFrame extends JFrame
 		});
 	}
 
-	public void loadCube(int size)
+	public void loadCube()
 	{
 		cubePanel = new CubePanel(appController);
 		this.setContentPane(cubePanel);

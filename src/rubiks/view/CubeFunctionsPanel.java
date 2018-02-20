@@ -75,7 +75,7 @@ public class CubeFunctionsPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				appController.solve(3);
+				appController.solve();
 			}
 		});
 		menu.addMouseListener(new MouseAdapter()
