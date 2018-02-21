@@ -16,13 +16,13 @@ public class RubiksCube implements Serializable
 	private int hours;
 	private int moveCount;
 	private boolean gameStart;
-	private final int[][][] rotation = { {}, {}, { { 0, 0, 1, 0 }, { 0, 1, 0, 0 }, { 1, 1, 0, 1 }, { 1, 0, 1, 1 } },
-			{ { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } } };
+	private int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } };
 
 	public RubiksCube(int size)
 	{
 		this.size = size;
 		cube = new RubiksPiece[size][size][size];
+		//rotation = new int[size * size][4];
 		time = "00:00:00.0";
 		timePB = "Personal Best: 99:59:59.9";
 		moves = "Moves: 000000";
@@ -34,6 +34,7 @@ public class RubiksCube implements Serializable
 		moveCount = 0;
 		gameStart = false;
 		setupCube();
+		//setupRotation();
 	}
 
 	private void setupCube()
@@ -148,6 +149,14 @@ public class RubiksCube implements Serializable
 		cube[size - 1][size - 1][size - 1] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 }, { 5, 5 } });
 	}
 
+	private void setupRotation()
+	{
+		rotation[0] = new int[] { 0, 0, size - 1, 0 };
+		rotation[1] = new int[] { 0, size - 1, 0, 0 };
+		rotation[2] = new int[] { size - 1, size - 1, 0, size - 1 };
+		rotation[3] = new int[] { size - 1, 0, size - 1, size - 1 };
+	}
+
 	public void rotateLayer(int direction, int layer, int amount)
 	{
 		for (int i = 0; i < amount; i++)
@@ -192,45 +201,45 @@ public class RubiksCube implements Serializable
 	private void rotateFSB(int layer)
 	{
 		int[][] orientationToSet = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
-		for (int i = 0; i < rotation[size].length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[layer][rotation[size][i][0]][rotation[size][i][1]].setOrientation(fixOrientation(cube[layer][rotation[size][i][0]][rotation[size][i][1]].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[layer][rotation[size][i][2]][rotation[size][i][3]];
+			cube[layer][rotation[i][0]][rotation[i][1]].setOrientation(fixOrientation(cube[layer][rotation[i][0]][rotation[i][1]].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[layer][rotation[i][2]][rotation[i][3]];
 		}
-		for (int i = 0; i < rotation[size].length; i++)
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[layer][rotation[size][i][0]][rotation[size][i][1]] = tempLayer[i];
+			cube[layer][rotation[i][0]][rotation[i][1]] = tempLayer[i];
 		}
 	}
 
 	private void rotateUED(int layer)
 	{
 		int[][] orientationToSet = { { 0, 2 }, { 2, 5 }, { 5, 4 }, { 4, 0 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
-		for (int i = 0; i < rotation[size].length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[rotation[size][i][0]][layer][rotation[size][i][1]].setOrientation(fixOrientation(cube[rotation[size][i][0]][layer][rotation[size][i][1]].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[rotation[size][i][2]][layer][rotation[size][i][3]];
+			cube[rotation[i][0]][layer][rotation[i][1]].setOrientation(fixOrientation(cube[rotation[i][0]][layer][rotation[i][1]].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[rotation[i][2]][layer][rotation[i][3]];
 		}
-		for (int i = 0; i < rotation[size].length; i++)
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[rotation[size][i][0]][layer][rotation[size][i][1]] = tempLayer[i];
+			cube[rotation[i][0]][layer][rotation[i][1]] = tempLayer[i];
 		}
 	}
 
 	private void rotateLMR(int layer)
 	{
 		int[][] orientationToSet = { { 0, 1 }, { 1, 5 }, { 5, 3 }, { 3, 0 } };
-		RubiksPiece[] tempLayer = new RubiksPiece[rotation[size].length];
-		for (int i = 0; i < rotation[size].length; i++)
+		RubiksPiece[] tempLayer = new RubiksPiece[rotation.length];
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[rotation[size][i][1]][rotation[size][i][0]][layer].setOrientation(fixOrientation(cube[rotation[size][i][1]][rotation[size][i][0]][layer].getOrientation(), orientationToSet));
-			tempLayer[i] = cube[rotation[size][i][3]][rotation[size][i][2]][layer];
+			cube[rotation[i][1]][rotation[i][0]][layer].setOrientation(fixOrientation(cube[rotation[i][1]][rotation[i][0]][layer].getOrientation(), orientationToSet));
+			tempLayer[i] = cube[rotation[i][3]][rotation[i][2]][layer];
 		}
-		for (int i = 0; i < rotation[size].length; i++)
+		for (int i = 0; i < rotation.length; i++)
 		{
-			cube[rotation[size][i][1]][rotation[size][i][0]][layer] = tempLayer[i];
+			cube[rotation[i][1]][rotation[i][0]][layer] = tempLayer[i];
 		}
 	}
 
