@@ -31,9 +31,9 @@ public class VictoryFrame extends JFrame
 	{
 		this.setContentPane(victoryPanel);
 		this.setLocationRelativeTo(appController.getAppFrame());
-		this.setLocation(this.getX() - 250, this.getY() - 250);
+		this.setLocation(this.getX() - 270, this.getY() - 100);
 		this.setUndecorated(true);
-		this.setSize(500, 500);
+		this.setSize(540, 200);
 		this.setBackground(new Color(100, 100, 100, 245));
 		this.setResizable(false);
 		this.setVisible(true);
@@ -42,5 +42,7 @@ public class VictoryFrame extends JFrame
 	public void reportPB(String pb)
 	{
 		victoryPanel.reportPB(pb);
+		this.setSize(540, this.getHeight() + 110);
+		this.setLocation(this.getX(), this.getY() - 55);
 	}
 }

@@ -21,8 +21,8 @@ public class VictoryPanel extends JPanel
 	private RubiksController appController;
 	private SpringLayout springLayout;
 	private JLabel solved;
-	private JTextArea pb1;
-	private JTextArea pb2;
+	private JLabel pb1;
+	private JLabel pb2;
 	private JButton menu;
 	private JButton tryAgain;
 
@@ -32,8 +32,8 @@ public class VictoryPanel extends JPanel
 		this.appController = appController;
 		springLayout = new SpringLayout();
 		solved = new JLabel("You Solved It!");
-		pb1 = new JTextArea("You got a new personal best time of 00:00:00.0!");
-		pb2 = new JTextArea("You got a new personal best move count of 0000!");
+		pb1 = new JLabel();
+		pb2 = new JLabel();
 		menu = new JButton("Menu");
 		tryAgain = new JButton("Try Again");
 		setupPanel();
@@ -53,16 +53,12 @@ public class VictoryPanel extends JPanel
 		solved.setFont(new Font("Lucida Grande", Font.BOLD, 60));
 		solved.setForeground(Color.WHITE);
 		pb1.setEnabled(true);
-		pb1.setEditable(false);
-		pb1.setLineWrap(true);
-		pb1.setWrapStyleWord(true);
+		pb1.setHorizontalAlignment(SwingConstants.CENTER);
 		pb1.setFont(new Font("Lucida Grande", Font.BOLD, 35));
 		pb1.setForeground(Color.WHITE);
 		pb1.setBackground(new Color(0, 0, 0, 0));
 		pb2.setEnabled(true);
-		pb2.setEditable(false);
-		pb2.setLineWrap(true);
-		pb2.setWrapStyleWord(true);
+		pb2.setHorizontalAlignment(SwingConstants.CENTER);
 		pb2.setFont(new Font("Lucida Grande", Font.BOLD, 35));
 		pb2.setForeground(Color.WHITE);
 		pb2.setBackground(new Color(0, 0, 0, 0));
@@ -81,20 +77,20 @@ public class VictoryPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.WEST, solved, 0, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, solved, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, solved, 0, SpringLayout.EAST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, pb1, 30, SpringLayout.SOUTH, solved);
+		springLayout.putConstraint(SpringLayout.NORTH, pb1, 40, SpringLayout.SOUTH, solved);
 		springLayout.putConstraint(SpringLayout.EAST, pb1, -5, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.WEST, pb1, 5, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, pb2, 20, SpringLayout.SOUTH, pb1);
+		springLayout.putConstraint(SpringLayout.NORTH, pb2, 15, SpringLayout.SOUTH, pb1);
 		springLayout.putConstraint(SpringLayout.EAST, pb2, -5, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.WEST, pb2, 5, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, menu, 400, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, menu, 20, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, menu, -20, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, menu, 220, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, tryAgain, 400, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, tryAgain, -220, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.EAST, menu, 240, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, menu, -100, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, tryAgain, -240, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, tryAgain, -20, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, tryAgain, -20, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, tryAgain, -100, SpringLayout.SOUTH, this);
 	}
 
 	private void setupListeners()
@@ -162,6 +158,23 @@ public class VictoryPanel extends JPanel
 	
 	public void reportPB(String pb)
 	{
-		
+		String pbText;
+		if (pb.contains(":"))
+		{
+			pbText = "<html>You got a new personal<br/>best time of " + pb + "!</html>";
+		}
+		else
+		{
+			pbText = "<html>You got a new personal<br/>best move count of " + pb + "!</html>";
+		}
+		if (pb1.getText().equals(""))
+		{
+			pb1.setText(pbText);
+			springLayout.putConstraint(SpringLayout.NORTH, pb1, 20, SpringLayout.SOUTH, solved);
+		}
+		else
+		{
+			pb2.setText(pbText); 
+		}
 	}
 }
