@@ -54,6 +54,7 @@ public class CubePanel extends JPanel
 		{
 			facePanels[i].deselect();
 		}
+		this.repaint();
 	}
 
 	public int[] findSelected()
@@ -74,6 +75,7 @@ public class CubePanel extends JPanel
 		{
 			facePanels[i].updateColors();
 		}
+		this.repaint();
 	}
 	
 	public void detectVictory()
