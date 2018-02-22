@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import rubiks.controller.RubiksController;
+import java.awt.Font;
 
 public class MenuButton extends JButton
 {
@@ -21,7 +22,8 @@ public class MenuButton extends JButton
 
 	private void setupButton()
 	{
-		this.setText(size + "");
+		this.setText(size + "x" + size + "x" + size);
+		this.setFont(new Font("Lucida Grande", Font.BOLD, 30));
 	}
 
 	private void setupListeners()

@@ -1,37 +1,40 @@
 package rubiks.view;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import javax.swing.JButton;
+import javax.swing.SpringLayout;
 import rubiks.controller.RubiksController;
 
 public class MenuPanel extends JPanel
 {
 	RubiksController appController;
-	JButton[] buttons;
+	SpringLayout springLayout;
+	MenuButtonPanel menuButtonPanel;
 
 	public MenuPanel(RubiksController appController)
 	{
 		super();
 		this.appController = appController;
-		buttons = new JButton[20];
-		for (int i = 0; i < buttons.length; i++)
-		{
-			buttons[i] = new MenuButton(appController, i + 2);
-		}
+		springLayout = new SpringLayout();
+		menuButtonPanel = new MenuButtonPanel(appController);
 		setupPanel();
+		setupLayout();
 	}
 
 	private void setupPanel()
-	{
-		for (JButton button : buttons)
-		{
-			this.add(button);
-		}
+	{	
+		this.setLayout(springLayout);
+		this.add(menuButtonPanel);
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
+	}
+	
+	private void setupLayout()
+	{
+		springLayout.putConstraint(SpringLayout.NORTH, menuButtonPanel, 200, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, menuButtonPanel, 0, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, menuButtonPanel, 0, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, menuButtonPanel, 0, SpringLayout.WEST, this);
 	}
 }
