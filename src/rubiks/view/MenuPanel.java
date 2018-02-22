@@ -20,10 +20,9 @@ public class MenuPanel extends JPanel
 		buttons = new JButton[20];
 		for (int i = 0; i < buttons.length; i++)
 		{
-			buttons[i] = new JButton((i + 2) + "");
+			buttons[i] = new MenuButton(appController, i + 2);
 		}
 		setupPanel();
-		setupListeners();
 	}
 
 	private void setupPanel()
@@ -34,19 +33,5 @@ public class MenuPanel extends JPanel
 		}
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
-	}
-
-	private void setupListeners()
-	{
-		for (int i = 0; i < buttons.length; i++)
-		{
-			buttons[i].addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent click)
-				{
-					appController.loadCube(3);
-				}
-			});
-		}
 	}
 }

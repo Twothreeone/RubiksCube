@@ -38,7 +38,7 @@ public class RubiksController
 	public void scramble()
 	{
 		appFrame.disposeVictoryFrame();
-		for (int i = 0; i < 1/*0000*/; i++)
+		for (int i = 0; i < 10000; i++)
 		{
 			cubes[size].rotateLayer((int) (Math.random() * 3), (int) (Math.random() * size), (int) (Math.random() * 3) + 1);
 			appFrame.getCubePanel().updateColors();
@@ -104,8 +104,8 @@ public class RubiksController
 
 	public void updateInfoPanel()
 	{
-		appFrame.getCubePanel().getCubeInfoPanel().updateInfoPanel(cubes[size].getTime(), cubes[size].getTimePB(), cubes[size].getMoves(), cubes[size].getMovesPB(), cubes[size].getDeciseconds(), cubes[size].getSeconds(), cubes[size].getMinutes(),
-				cubes[size].getHours(), cubes[size].getMoveCount(), cubes[size].isGameStart());
+		appFrame.getCubePanel().getCubeInfoPanel().updateInfoPanel(cubes[size].getTime(), cubes[size].getTimePB(), cubes[size].getMoves(), cubes[size].getMovesPB(), cubes[size].getDeciseconds(),
+				cubes[size].getSeconds(), cubes[size].getMinutes(), cubes[size].getHours(), cubes[size].getMoveCount(), cubes[size].isGameStart());
 	}
 
 	public void victory()
@@ -115,7 +115,7 @@ public class RubiksController
 
 	public void exit()
 	{
-		if (cubes != null)
+		if (appFrame.getCubePanel() != null)
 		{
 			appFrame.getCubePanel().getCubeInfoPanel().updateCube();
 			FileController.saveCubesToFile(cubes);
@@ -127,7 +127,7 @@ public class RubiksController
 	{
 		appFrame.reportPB(pb);
 	}
-	
+
 	/**
 	 * @return the size
 	 */
@@ -135,7 +135,7 @@ public class RubiksController
 	{
 		return size;
 	}
-	
+
 	/**
 	 * @return the appFrame
 	 */

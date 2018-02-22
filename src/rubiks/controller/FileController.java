@@ -33,7 +33,13 @@ public class FileController
 	
 	public static RubiksCube[] readCubesFromFile()
 	{
-		RubiksCube[] cubes = {null, null, new RubiksCube(2), new RubiksCube(3)};
+		RubiksCube[] cubes = new RubiksCube[22];
+		cubes[0] = null;
+		cubes[1] = null;
+		for (int i = 2; i < 22; i++)
+		{
+			cubes[i] = new RubiksCube(i);
+		}
 		File file = new File("cubes.rbk");
 		try
 		{

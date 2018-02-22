@@ -16,13 +16,13 @@ public class RubiksCube implements Serializable
 	private int hours;
 	private int moveCount;
 	private boolean gameStart;
-	private int[][] rotation = { { 0, 0, 2, 0 }, { 0, 1, 1, 0 }, { 0, 2, 0, 0 }, { 1, 2, 0, 1 }, { 2, 2, 0, 2 }, { 2, 1, 1, 2 }, { 2, 0, 2, 2 }, { 1, 0, 2, 1 }, { 1, 1, 1, 1 } };
+	private int[][] rotation;
 
 	public RubiksCube(int size)
 	{
 		this.size = size;
 		cube = new RubiksPiece[size][size][size];
-		//rotation = new int[size * size][4];
+		rotation = new int[size * size][4];
 		time = "00:00:00.0";
 		timePB = "Personal Best: 99:59:59.9";
 		moves = "Moves: 000000";
@@ -34,7 +34,7 @@ public class RubiksCube implements Serializable
 		moveCount = 0;
 		gameStart = false;
 		setupCube();
-		//setupRotation();
+		setupRotation();
 	}
 
 	private void setupCube()
@@ -137,7 +137,7 @@ public class RubiksCube implements Serializable
 		}
 		for (int col = 1; col < size - 1; col++)
 		{
-			cube[size - 1][size - 1][1] = new RubiksPiece(new int[][] { { 3, 3 }, { 5, 5 } });
+			cube[size - 1][size - 1][col] = new RubiksPiece(new int[][] { { 3, 3 }, { 5, 5 } });
 		}
 		cube[0][0][0] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 }, { 4, 4 } });
 		cube[0][0][size - 1] = new RubiksPiece(new int[][] { { 0, 0 }, { 1, 1 }, { 2, 2 } });
@@ -151,10 +151,15 @@ public class RubiksCube implements Serializable
 
 	private void setupRotation()
 	{
-		rotation[0] = new int[] { 0, 0, size - 1, 0 };
-		rotation[1] = new int[] { 0, size - 1, 0, 0 };
-		rotation[2] = new int[] { size - 1, size - 1, 0, size - 1 };
-		rotation[3] = new int[] { size - 1, 0, size - 1, size - 1 };
+		int index = 0;
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				rotation[index] = new int[] {i, j, size - 1 - j, i};
+				index++;
+			}
+		}
 	}
 
 	public void rotateLayer(int direction, int layer, int amount)
