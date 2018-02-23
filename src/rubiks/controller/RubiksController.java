@@ -38,7 +38,7 @@ public class RubiksController
 	public void scramble()
 	{
 		appFrame.disposeVictoryFrame();
-		for (int i = 0; i < 10000; i++)
+		for (int i = 0; i < 1000; i++)
 		{
 			cubes[size].rotateLayer((int) (Math.random() * 3), (int) (Math.random() * size), (int) (Math.random() * 3) + 1);
 			appFrame.getCubePanel().updateColors();

@@ -33,10 +33,10 @@ public class FileController
 	
 	public static RubiksCube[] readCubesFromFile()
 	{
-		RubiksCube[] cubes = new RubiksCube[22];
+		RubiksCube[] cubes = new RubiksCube[32];
 		cubes[0] = null;
 		cubes[1] = null;
-		for (int i = 2; i < 22; i++)
+		for (int i = 2; i < 32; i++)
 		{
 			cubes[i] = new RubiksCube(i);
 		}

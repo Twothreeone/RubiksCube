@@ -1,7 +1,7 @@
 package rubiks.view;
 
 import java.awt.Color;
-
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -16,7 +16,7 @@ public class MenuButtonPanel extends JPanel
 	public MenuButtonPanel(RubiksController appController)
 	{
 		this.appController = appController;
-		buttons = new JButton[20];
+		buttons = new JButton[30];
 		for (int i = 0; i < buttons.length; i++)
 		{
 			buttons[i] = new MenuButton(appController, i + 2);
@@ -26,11 +26,12 @@ public class MenuButtonPanel extends JPanel
 	
 	private void setupPanel()
 	{
+		this.setLayout(new GridLayout(6, 5));
 		for (JButton button : buttons)
 		{
 			this.add(button);
 		}
 		this.setBackground(Color.DARK_GRAY);
-		setBorder(new LineBorder(Color.BLACK, 5));
+		setBorder(new LineBorder(Color.BLACK, 10));
 	}
 }
