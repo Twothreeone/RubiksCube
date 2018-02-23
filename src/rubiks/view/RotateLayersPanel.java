@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 public class RotateLayersPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private JButton panelLabel;
 	private JButton up;

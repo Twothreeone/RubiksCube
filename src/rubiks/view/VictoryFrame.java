@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 public class VictoryFrame extends JFrame
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private VictoryPanel victoryPanel;
 

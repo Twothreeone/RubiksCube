@@ -12,6 +12,7 @@ import java.awt.Font;
 
 public class MenuButton extends JButton
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private int size;
 

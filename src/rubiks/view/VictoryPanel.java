@@ -3,10 +3,8 @@ package rubiks.view;
 import java.awt.Color;
 import javax.swing.SpringLayout;
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import rubiks.controller.RubiksController;
 import javax.swing.SwingConstants;
@@ -18,6 +16,7 @@ import java.awt.event.MouseEvent;
 
 public class VictoryPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private SpringLayout springLayout;
 	private JLabel solved;

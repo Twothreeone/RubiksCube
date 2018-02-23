@@ -4,6 +4,8 @@ import rubiks.controller.RubiksController;
 
 public class LeftPanel extends FacePanel
 {
+	private static final long serialVersionUID = 1L;
+	
 	public LeftPanel(RubiksController appController)
 	{
 		super(appController);

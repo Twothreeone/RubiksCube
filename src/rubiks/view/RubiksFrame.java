@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 public class RubiksFrame extends JFrame
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private MenuPanel menuPanel;
 	private CubePanel cubePanel;

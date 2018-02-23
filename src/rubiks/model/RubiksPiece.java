@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class RubiksPiece implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private int[][] colorsAndOrientation;
 
 	public RubiksPiece(int[][] colorsAndOrientation)

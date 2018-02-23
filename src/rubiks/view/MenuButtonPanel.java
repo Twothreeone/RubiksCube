@@ -10,6 +10,7 @@ import rubiks.controller.RubiksController;
 
 public class MenuButtonPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	RubiksController appController;
 	JButton[] buttons;
 	

@@ -8,7 +8,7 @@ import rubiks.controller.RubiksController;
 
 public class CubePanel extends JPanel
 {
-	private RubiksController appController;
+	private static final long serialVersionUID = 1L;
 	private CubeInfoPanel cubeInfoPanel;
 	private CubeFunctionsPanel cubeFunctionsPanel;
 	private RotateLayersPanel rotateLayersPanel;
@@ -18,7 +18,6 @@ public class CubePanel extends JPanel
 	public CubePanel(RubiksController appController)
 	{
 		super();
-		this.appController = appController;
 		cubeInfoPanel = new CubeInfoPanel(appController);
 		cubeFunctionsPanel = new CubeFunctionsPanel(appController);
 		rotateLayersPanel = new RotateLayersPanel(appController);

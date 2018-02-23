@@ -11,17 +11,16 @@ import java.awt.Font;
 
 public class MenuPanel extends JPanel
 {
-	RubiksController appController;
-	SpringLayout springLayout;
-	MenuButtonPanel menuButtonPanel;
-	JLabel title;
-	JLabel title2;
-	JLabel author;
+	private static final long serialVersionUID = 1L;
+	private SpringLayout springLayout;
+	private MenuButtonPanel menuButtonPanel;
+	private JLabel title;
+	private JLabel title2;
+	private JLabel author;
 
 	public MenuPanel(RubiksController appController)
 	{
 		super();
-		this.appController = appController;
 		springLayout = new SpringLayout();
 		menuButtonPanel = new MenuButtonPanel(appController);
 		springLayout.putConstraint(SpringLayout.NORTH, menuButtonPanel, 200, SpringLayout.NORTH, this);

@@ -4,6 +4,8 @@ import rubiks.controller.RubiksController;
 
 public class FrontPanel extends FacePanel
 {
+	private static final long serialVersionUID = 1L;
+	
 	public FrontPanel(RubiksController appController)
 	{
 		super(appController);

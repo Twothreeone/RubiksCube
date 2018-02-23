@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 public class CubeInfoPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private DecimalFormat timeFormat;
 	private DecimalFormat movesFormat;

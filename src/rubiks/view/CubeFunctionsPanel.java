@@ -14,6 +14,7 @@ import rubiks.controller.RubiksController;
 
 public class CubeFunctionsPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private JButton menu;
 	private JButton scramble;

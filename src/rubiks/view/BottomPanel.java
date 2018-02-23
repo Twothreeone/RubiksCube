@@ -4,6 +4,8 @@ import rubiks.controller.RubiksController;
 
 public class BottomPanel extends FacePanel
 {
+	private static final long serialVersionUID = 1L;
+	
 	public BottomPanel(RubiksController appController)
 	{
 		super(appController);

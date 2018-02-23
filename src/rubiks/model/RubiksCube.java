@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class RubiksCube implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private RubiksPiece[][][] cube;
 	private int size;
 	private String time;

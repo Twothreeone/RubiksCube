@@ -8,6 +8,7 @@ import javax.swing.border.LineBorder;
 
 public abstract class FacePanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	protected RubiksController appController;
 	protected RubiksButton[] buttonArray;
 	protected final Color[] colors = new Color[] { 
