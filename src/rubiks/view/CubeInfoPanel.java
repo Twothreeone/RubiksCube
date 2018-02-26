@@ -33,6 +33,12 @@ public class CubeInfoPanel extends JPanel
 	private int moveCount;
 	private boolean gameStart;
 
+	/**
+	 * Creates the CubeInfoPanel by setting default values and calling helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public CubeInfoPanel(RubiksController appController)
 	{
 		super();
@@ -56,6 +62,9 @@ public class CubeInfoPanel extends JPanel
 		setupLayout();
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the timer.
+	 */
 	private void setupTimer()
 	{
 		timer = new Timer(100, new ActionListener()
@@ -87,6 +96,9 @@ public class CubeInfoPanel extends JPanel
 		});
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the look of the panel and its components.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(springLayout);
@@ -119,6 +131,9 @@ public class CubeInfoPanel extends JPanel
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the layout of the components.
+	 */
 	private void setupLayout()
 	{
 		springLayout.putConstraint(SpringLayout.EAST, cubeType, 0, SpringLayout.EAST, this);
@@ -137,6 +152,9 @@ public class CubeInfoPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.NORTH, movesPB, 0, SpringLayout.SOUTH, moves);
 	}
 
+	/**
+	 * Sets the values for beginning a solve.
+	 */
 	public void startGame()
 	{
 		timer.stop();
@@ -150,6 +168,9 @@ public class CubeInfoPanel extends JPanel
 		gameStart = true;
 	}
 
+	/**
+	 * Properly increments the moveCount int and moves JLabel.
+	 */
 	public void incrementMoves()
 	{
 		if (gameStart)
@@ -166,12 +187,18 @@ public class CubeInfoPanel extends JPanel
 		}
 	}
 
+	/**
+	 * Ends a given solve.
+	 */
 	public void quitGame()
 	{
 		startGame();
 		gameStart = false;
 	}
 
+	/**
+	 * Handles completing a solve and passes personal bests to the appController.
+	 */
 	public void victory()
 	{
 		gameStart = false;
@@ -194,6 +221,9 @@ public class CubeInfoPanel extends JPanel
 		}
 	}
 
+	/**
+	 * Passes the current cube info to the cube.
+	 */
 	public void updateCube()
 	{
 		if (!gameStart)
@@ -203,6 +233,30 @@ public class CubeInfoPanel extends JPanel
 		appController.updateCube(time.getText(), timePB.getText(), moves.getText(), movesPB.getText(), deciseconds, seconds, minutes, hours, moveCount, gameStart);
 	}
 
+	/**
+	 * Updates the cube info from the cube.
+	 * 
+	 * @param time
+	 *            The current time of the solve.
+	 * @param timePB
+	 *            The best solve time.
+	 * @param moves
+	 *            The current amount of moves of the solve.
+	 * @param movesPB
+	 *            The lowest amount of moves used to solve the cube.
+	 * @param deciseconds
+	 *            The current deciseconds of the cubes solve.
+	 * @param seconds
+	 *            The current seconds of the cubes solve.
+	 * @param minutes
+	 *            The current minutes of the cubes solve.
+	 * @param hours
+	 *            The current hours of the cubes solve.
+	 * @param moveCount
+	 *            The current amount of moves of the cubes solve.
+	 * @param gameStart
+	 *            Whether or not the solve has been started.
+	 */
 	public void updateInfoPanel(String time, String timePB, String moves, String movesPB, int deciseconds, int seconds, int minutes, int hours, int moveCount, boolean gameStart)
 	{
 		this.time.setText(time);

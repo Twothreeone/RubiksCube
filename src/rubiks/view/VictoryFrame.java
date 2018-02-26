@@ -39,7 +39,13 @@ public class VictoryFrame extends JFrame
 		this.setResizable(false);
 		this.setVisible(true);
 	}
-	
+
+	/**
+	 * Passes a new personal best to the VictoryPanel and adjusts the frame's size.
+	 * 
+	 * @param pb
+	 *            The new personal best to be shown.
+	 */
 	public void reportPB(String pb)
 	{
 		victoryPanel.reportPB(pb);

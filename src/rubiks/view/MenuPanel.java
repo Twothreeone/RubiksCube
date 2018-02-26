@@ -18,21 +18,31 @@ public class MenuPanel extends JPanel
 	private JLabel title2;
 	private JLabel author;
 
+	/**
+	 * Creates the MenuPanel by setting default values and calling helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public MenuPanel(RubiksController appController)
 	{
 		super();
 		springLayout = new SpringLayout();
 		menuButtonPanel = new MenuButtonPanel(appController);
 		springLayout.putConstraint(SpringLayout.NORTH, menuButtonPanel, 200, SpringLayout.NORTH, this);
-		title = new JLabel("<html><font color='red'>R</font><font color='orange'>u</font><font color='yellow'>b</font><font color='green'>i</font><font color='blue'>k</font>'s <font color='silver'> Cube</font></html>\"");
+		title = new JLabel(
+				"<html><font color='red'>R</font><font color='orange'>u</font><font color='yellow'>b</font><font color='green'>i</font><font color='blue'>k</font>'s <font color='silver'> Cube</font></html>\"");
 		title2 = new JLabel("Simulator");
 		author = new JLabel("by Ben Charlesworth");
 		setupPanel();
 		setupLayout();
 	}
 
+	/**
+	 * Sets up the look of the panel and its components.
+	 */
 	private void setupPanel()
-	{	
+	{
 		this.setLayout(springLayout);
 		this.add(menuButtonPanel);
 		this.add(title);
@@ -49,7 +59,10 @@ public class MenuPanel extends JPanel
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
-	
+
+	/**
+	 * Sets up the layout of all of the components.
+	 */
 	private void setupLayout()
 	{
 		springLayout.putConstraint(SpringLayout.NORTH, author, 0, SpringLayout.SOUTH, title);

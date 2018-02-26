@@ -5,7 +5,13 @@ import rubiks.controller.RubiksController;
 public class FrontPanel extends FacePanel
 {
 	private static final long serialVersionUID = 1L;
-	
+
+	/**
+	 * Calls helper methods to create the FrontPanel.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public FrontPanel(RubiksController appController)
 	{
 		super(appController);
@@ -13,6 +19,9 @@ public class FrontPanel extends FacePanel
 		updateColors();
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the id's of the buttons.
+	 */
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
@@ -24,6 +33,6 @@ public class FrontPanel extends FacePanel
 				arrayIndex++;
 			}
 		}
-		
+
 	}
 }

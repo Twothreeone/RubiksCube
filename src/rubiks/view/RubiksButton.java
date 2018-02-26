@@ -16,7 +16,13 @@ public class RubiksButton extends JButton
 	private Color backgroundColor;
 	private boolean selected;
 	private int[] id;
-	
+
+	/**
+	 * Creates the RubiksButton with a few helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public RubiksButton(RubiksController appController)
 	{
 		super();
@@ -25,13 +31,19 @@ public class RubiksButton extends JButton
 		setupButton();
 		setupListeners();
 	}
-	
+
+	/**
+	 * Helper method for the constructor, sets up the look of the button.
+	 */
 	private void setupButton()
 	{
 		this.setOpaque(true);
 		this.setBorder(new LineBorder(Color.BLACK, 10 / appController.getSize() + 1));
 	}
-	
+
+	/**
+	 * Helper method for the constructor, sets up the functionality of the button.
+	 */
 	private void setupListeners()
 	{
 		this.addActionListener(new ActionListener()
@@ -49,12 +61,12 @@ public class RubiksButton extends JButton
 			{
 				setBackground(backgroundColor.darker());
 			}
-			
+
 			public void mouseReleased(MouseEvent offClick)
 			{
 				setBackground(backgroundColor);
 			}
-			
+
 			public void mouseEntered(MouseEvent enter)
 			{
 				if (!selected)
@@ -62,7 +74,7 @@ public class RubiksButton extends JButton
 					setBorder(new LineBorder(Color.WHITE, 10 / appController.getSize() + 1));
 				}
 			}
-			
+
 			public void mouseExited(MouseEvent exit)
 			{
 				if (!selected)
@@ -72,7 +84,10 @@ public class RubiksButton extends JButton
 			}
 		});
 	}
-	
+
+	/**
+	 * Puts the button into a deselected state.
+	 */
 	public void deselect()
 	{
 		selected = false;
@@ -80,7 +95,8 @@ public class RubiksButton extends JButton
 	}
 
 	/**
-	 * @param backgroundColor the backgroundColor to set
+	 * @param backgroundColor
+	 *            the backgroundColor to set
 	 */
 	public void setBackgroundColor(Color backgroundColor)
 	{
@@ -105,7 +121,8 @@ public class RubiksButton extends JButton
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setID(int[] id)
 	{

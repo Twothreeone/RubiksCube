@@ -22,6 +22,12 @@ public class RotateLayersPanel extends JPanel
 	private JButton down;
 	private JButton left;
 
+	/**
+	 * Creates the RotateLayersPanel by setting default values and calling helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public RotateLayersPanel(RubiksController appController)
 	{
 		super();
@@ -35,6 +41,9 @@ public class RotateLayersPanel extends JPanel
 		setupListeners();
 	}
 
+	/**
+	 * Sets up the look of the panel and all of its components.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
@@ -75,6 +84,9 @@ public class RotateLayersPanel extends JPanel
 		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
+	/**
+	 * Sets up the functionality of all of the components.
+	 */
 	private void setupListeners()
 	{
 		up.addActionListener(new ActionListener()

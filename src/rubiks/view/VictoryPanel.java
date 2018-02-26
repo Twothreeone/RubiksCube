@@ -25,6 +25,10 @@ public class VictoryPanel extends JPanel
 	private JButton menu;
 	private JButton tryAgain;
 
+	/**
+	 * Creates the VictoryPanel with default values and calls helper methods.
+	 * @param appController
+	 */
 	public VictoryPanel(RubiksController appController)
 	{
 		super();
@@ -40,6 +44,9 @@ public class VictoryPanel extends JPanel
 		setupListeners();
 	}
 
+	/**
+	 * Sets up the look of the panel and its components.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(springLayout);
@@ -71,6 +78,9 @@ public class VictoryPanel extends JPanel
 		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
+	/**
+	 * Sets up the layout of the components.
+	 */
 	private void setupLayout()
 	{
 		springLayout.putConstraint(SpringLayout.WEST, solved, 0, SpringLayout.WEST, this);
@@ -92,6 +102,9 @@ public class VictoryPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.NORTH, tryAgain, -100, SpringLayout.SOUTH, this);
 	}
 
+	/**
+	 * Sets up the functionality of the components.
+	 */
 	private void setupListeners()
 	{
 		menu.addActionListener(new ActionListener()
@@ -155,6 +168,10 @@ public class VictoryPanel extends JPanel
 		});
 	}
 	
+	/**
+	 * Throws values into the pb labels to show new personal bests attained.
+	 * @param pb The new personal best that was attained.
+	 */
 	public void reportPB(String pb)
 	{
 		String pbText;

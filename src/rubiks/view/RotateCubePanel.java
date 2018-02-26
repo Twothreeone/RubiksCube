@@ -23,7 +23,13 @@ public class RotateCubePanel extends JPanel
 	private JButton left;
 	private JButton rotateLeft;
 	private JButton rotateRight;
-	
+
+	/**
+	 * Creates the RotateCubePanel by setting default values and calling helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public RotateCubePanel(RubiksController appController)
 	{
 		super();
@@ -38,7 +44,10 @@ public class RotateCubePanel extends JPanel
 		setupPanel();
 		setupListeners();
 	}
-	
+
+	/**
+	 * Sets up the look of the panel and all of its components.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 3));
@@ -88,7 +97,10 @@ public class RotateCubePanel extends JPanel
 		this.setBackground(Color.DARK_GRAY);
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
-	
+
+	/**
+	 * Sets up the functionality of all of the components.
+	 */
 	private void setupListeners()
 	{
 		up.addActionListener(new ActionListener()

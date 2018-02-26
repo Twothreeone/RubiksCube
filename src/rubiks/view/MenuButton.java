@@ -16,6 +16,14 @@ public class MenuButton extends JButton
 	private RubiksController appController;
 	private int size;
 
+	/**
+	 * Creates the MenuButton and calls helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 * @param size
+	 *            The size of cube the button corresponds to.
+	 */
 	public MenuButton(RubiksController appController, int size)
 	{
 		super();
@@ -25,6 +33,9 @@ public class MenuButton extends JButton
 		setupListeners();
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the look of the button.
+	 */
 	private void setupButton()
 	{
 		this.setForeground(Color.WHITE);
@@ -35,6 +46,9 @@ public class MenuButton extends JButton
 		this.setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the functionality of the button.
+	 */
 	private void setupListeners()
 	{
 		this.addActionListener(new ActionListener()

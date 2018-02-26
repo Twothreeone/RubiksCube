@@ -20,6 +20,12 @@ public class CubeFunctionsPanel extends JPanel
 	private JButton scramble;
 	private JButton solve;
 
+	/**
+	 * Creates the CubeFunctionsPanel by setting default values and calling helper methods.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public CubeFunctionsPanel(RubiksController appController)
 	{
 		super();
@@ -31,6 +37,9 @@ public class CubeFunctionsPanel extends JPanel
 		setupListeners();
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the look of the panel and its components.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(new GridLayout(3, 1));
@@ -56,6 +65,9 @@ public class CubeFunctionsPanel extends JPanel
 		setBorder(new LineBorder(Color.BLACK, 5));
 	}
 
+	/**
+	 * Sets up the functionality of all of the components.
+	 */
 	private void setupListeners()
 	{
 		menu.addActionListener(new ActionListener()

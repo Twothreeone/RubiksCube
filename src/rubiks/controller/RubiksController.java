@@ -1,12 +1,14 @@
 package rubiks.controller;
 
 import rubiks.view.RubiksFrame;
+import rubiks.view.VictoryFrame;
 import rubiks.model.RubiksCube;
 import rubiks.model.RubiksPiece;
 
 public class RubiksController
 {
 	private RubiksFrame appFrame;
+	private VictoryFrame victoryFrame;
 	private RubiksCube[] cubes;
 	private int size;
 
@@ -49,7 +51,7 @@ public class RubiksController
 	 */
 	public void scramble()
 	{
-		appFrame.disposeVictoryFrame();
+		disposeVictoryFrame();
 		for (int i = 0; i < 1000; i++)
 		{
 			cubes[size].rotateLayer((int) (Math.random() * 3), (int) (Math.random() * size), (int) (Math.random() * 3) + 1);
@@ -181,7 +183,33 @@ public class RubiksController
 	 */
 	public void victory()
 	{
-		appFrame.victory();
+		victoryFrame = new VictoryFrame(this);
+	}
+
+	/**
+	 * Passes a new personal best to the VictoryFrame.
+	 * 
+	 * @param pb
+	 *            A new personal best.
+	 */
+	public void reportPB(String pb)
+	{
+		if (victoryFrame != null)
+		{
+			victoryFrame.reportPB(pb);
+		}
+	}
+
+	/**
+	 * Gets rid of the VictoryFrame if it exists.
+	 */
+	public void disposeVictoryFrame()
+	{
+		if (victoryFrame != null)
+		{
+			victoryFrame.dispose();
+			victoryFrame = null;
+		}
 	}
 
 	/**
@@ -195,17 +223,6 @@ public class RubiksController
 			FileController.saveCubesToFile(cubes);
 		}
 		System.exit(0);
-	}
-
-	/**
-	 * Calls the RubiksFrame's reportPB method with a pb.
-	 * 
-	 * @param pb
-	 *            A new personal best.
-	 */
-	public void reportPB(String pb)
-	{
-		appFrame.reportPB(pb);
 	}
 
 	/**

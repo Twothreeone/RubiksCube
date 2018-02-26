@@ -14,7 +14,6 @@ public class RubiksFrame extends JFrame
 	private RubiksController appController;
 	private MenuPanel menuPanel;
 	private CubePanel cubePanel;
-	private VictoryFrame victoryFrame;
 
 	/**
 	 * Constructor for the RubiksFrame, sets the data members and sets up the frame.
@@ -45,6 +44,10 @@ public class RubiksFrame extends JFrame
 		this.setVisible(true);
 	}
 
+	/**
+	 * Helper method for the constructor, used to give the keyboard functionality and to do stuff when
+	 * the window's state changes.
+	 */
 	private void setupListeners()
 	{
 		this.addKeyListener(new KeyAdapter()
@@ -122,9 +125,9 @@ public class RubiksFrame extends JFrame
 		{
 			public void windowActivated(WindowEvent e)
 			{
-				disposeVictoryFrame();
+				appController.disposeVictoryFrame();
 			}
-			
+
 			public void windowClosing(WindowEvent e)
 			{
 				appController.exit();
@@ -132,6 +135,9 @@ public class RubiksFrame extends JFrame
 		});
 	}
 
+	/**
+	 * Resets the contentPane to a CubePanel.
+	 */
 	public void loadCube()
 	{
 		cubePanel = new CubePanel(appController);
@@ -139,33 +145,14 @@ public class RubiksFrame extends JFrame
 		this.revalidate();
 	}
 
+	/**
+	 * Resets the contentPane to a MenuPanel.
+	 */
 	public void menu()
 	{
-		disposeVictoryFrame();
+		appController.disposeVictoryFrame();
 		this.setContentPane(menuPanel);
 		this.revalidate();
-	}
-	
-	public void victory()
-	{
-		victoryFrame = new VictoryFrame(appController);
-	}
-	
-	public void reportPB(String pb)
-	{
-		if (victoryFrame != null)
-		{
-			victoryFrame.reportPB(pb);
-		}
-	}
-	
-	public void disposeVictoryFrame()
-	{
-		if (victoryFrame != null)
-		{
-			victoryFrame.dispose();
-			victoryFrame = null;
-		}
 	}
 
 	/**

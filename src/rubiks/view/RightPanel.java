@@ -5,7 +5,13 @@ import rubiks.controller.RubiksController;
 public class RightPanel extends FacePanel
 {
 	private static final long serialVersionUID = 1L;
-	
+
+	/**
+	 * Calls helper methods to create the RightPanel.
+	 * 
+	 * @param appController
+	 *            The app's RubiksController.
+	 */
 	public RightPanel(RubiksController appController)
 	{
 		super(appController);
@@ -13,6 +19,9 @@ public class RightPanel extends FacePanel
 		updateColors();
 	}
 
+	/**
+	 * Helper method for the constructor, sets up the id's of the buttons.
+	 */
 	private void setupPanel()
 	{
 		int arrayIndex = 0;
