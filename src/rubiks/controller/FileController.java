@@ -11,6 +11,12 @@ import java.io.ObjectOutputStream;
 
 public class FileController
 {
+	/**
+	 * Method to save a given array of RubiksCubes and save them to a file.
+	 * 
+	 * @param cubes
+	 *            The array of RubiksCubes sizes 2 to 31.
+	 */
 	public static void saveCubesToFile(RubiksCube[] cubes)
 	{
 		File file = new File("cubes.rbk");
@@ -30,7 +36,12 @@ public class FileController
 			System.out.println("There was an error: " + error.getMessage());
 		}
 	}
-	
+
+	/**
+	 * Method to load an array of RubiksCubes from a file.
+	 * 
+	 * @return The array of RubiksCubes sizes 2 to 31.
+	 */
 	public static RubiksCube[] readCubesFromFile()
 	{
 		RubiksCube[] cubes = new RubiksCube[32];

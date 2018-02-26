@@ -19,6 +19,12 @@ public class RubiksCube implements Serializable
 	private boolean gameStart;
 	private int[][] rotation;
 
+	/**
+	 * Creates a new RubiksCube of the given size and sets the data members to default values.
+	 * 
+	 * @param size
+	 *            The size of the cube.
+	 */
 	public RubiksCube(int size)
 	{
 		this.size = size;
@@ -38,6 +44,9 @@ public class RubiksCube implements Serializable
 		setupRotation();
 	}
 
+	/**
+	 * Creates the 3d array of RubiksPieces in a solved state of the RubiksCubes size.
+	 */
 	private void setupCube()
 	{
 		for (int plane = 1; plane < size - 1; plane++)
@@ -150,6 +159,9 @@ public class RubiksCube implements Serializable
 		cube[size - 1][size - 1][size - 1] = new RubiksPiece(new int[][] { { 2, 2 }, { 3, 3 }, { 5, 5 } });
 	}
 
+	/**
+	 * Sets up an array used for the rotating of layers.
+	 */
 	private void setupRotation()
 	{
 		int index = 0;
@@ -157,12 +169,22 @@ public class RubiksCube implements Serializable
 		{
 			for (int j = 0; j < size; j++)
 			{
-				rotation[index] = new int[] {i, j, size - 1 - j, i};
+				rotation[index] = new int[] { i, j, size - 1 - j, i };
 				index++;
 			}
 		}
 	}
 
+	/**
+	 * Calls the rotate methods properly with the given parameters.
+	 * 
+	 * @param direction
+	 *            Which direction will be turned (0 = FSB, 1 = UED, 2 = LMR).
+	 * @param layer
+	 *            How deep the layer to be turned is.
+	 * @param amount
+	 *            How many times to turn the layer.
+	 */
 	public void rotateLayer(int direction, int layer, int amount)
 	{
 		for (int i = 0; i < amount; i++)
@@ -176,6 +198,14 @@ public class RubiksCube implements Serializable
 		}
 	}
 
+	/**
+	 * Calls the rotate methods properly with the given parameters to rotate the entire cube.
+	 * 
+	 * @param direction
+	 *            Which direction will be turned (0 = FSB, 1 = UED, 2 = LMR).
+	 * @param amount
+	 *            How many times to turn the cube.
+	 */
 	public void rotateCube(int direction, int amount)
 	{
 		for (int i = 0; i < amount; i++)
@@ -204,6 +234,13 @@ public class RubiksCube implements Serializable
 		}
 	}
 
+	/**
+	 * Properly rotates the FSB layers of the cube using the rotation array and the fixOrientation
+	 * method
+	 * 
+	 * @param layer
+	 *            How deep the layer to be turned is.
+	 */
 	private void rotateFSB(int layer)
 	{
 		int[][] orientationToSet = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
@@ -219,6 +256,13 @@ public class RubiksCube implements Serializable
 		}
 	}
 
+	/**
+	 * Properly rotates the UED layers of the cube using the rotation array and the fixOrientation
+	 * method
+	 * 
+	 * @param layer
+	 *            How deep the layer to be turned is.
+	 */
 	private void rotateUED(int layer)
 	{
 		int[][] orientationToSet = { { 0, 2 }, { 2, 5 }, { 5, 4 }, { 4, 0 } };
@@ -234,6 +278,13 @@ public class RubiksCube implements Serializable
 		}
 	}
 
+	/**
+	 * Properly rotates the LMR layers of the cube using the rotation array and the fixOrientation
+	 * method
+	 * 
+	 * @param layer
+	 *            How deep the layer to be turned is.
+	 */
 	private void rotateLMR(int layer)
 	{
 		int[][] orientationToSet = { { 0, 1 }, { 1, 5 }, { 5, 3 }, { 3, 0 } };
@@ -249,6 +300,15 @@ public class RubiksCube implements Serializable
 		}
 	}
 
+	/**
+	 * Corrects the given orientation.
+	 * 
+	 * @param orientation
+	 *            The orientation of a RubiksPiece.
+	 * @param orientationToSet
+	 *            The orientations to be changed to specified different ones.
+	 * @return The corrected orientation.
+	 */
 	private int[] fixOrientation(int[] orientation, int[][] orientationToSet)
 	{
 		for (int i = 0; i < orientation.length; i++)
