@@ -33,6 +33,5 @@ public class FrontPanel extends FacePanel
 				arrayIndex++;
 			}
 		}
-
 	}
 }

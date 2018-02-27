@@ -17,6 +17,7 @@ public class RubiksController
 	 */
 	public RubiksController()
 	{
+		cubes = FileController.readCubesFromFile();
 		appFrame = new RubiksFrame(this);
 	}
 
@@ -29,7 +30,6 @@ public class RubiksController
 	public void loadCube(int size)
 	{
 		this.size = size;
-		cubes = FileController.readCubesFromFile();
 		appFrame.loadCube();
 		appFrame.requestFocus();
 		updateInfoPanel();
@@ -41,7 +41,6 @@ public class RubiksController
 	public void menu()
 	{
 		appFrame.getCubePanel().getCubeInfoPanel().updateCube();
-		FileController.saveCubesToFile(cubes);
 		appFrame.menu();
 		appFrame.requestFocus();
 	}

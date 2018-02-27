@@ -1,13 +1,16 @@
 package rubiks.controller;
 
 import rubiks.model.RubiksCube;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import javax.xml.bind.DatatypeConverter;
 
 public class FileController
 {
@@ -22,14 +25,17 @@ public class FileController
 		File file = new File("cubes.rbk");
 		try
 		{
-			FileOutputStream fileStream = new FileOutputStream(file);
-			ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
+			ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+			ObjectOutputStream objectStream;
+			objectStream = new ObjectOutputStream(byteStream);
+			PrintWriter writer = new PrintWriter(file);
 			objectStream.writeObject(cubes);
+			byte[] bytes = byteStream.toByteArray();
+			String data = DatatypeConverter.printHexBinary(bytes);
+			writer.write(data);
+			byteStream.close();
 			objectStream.close();
-		}
-		catch (FileNotFoundException error)
-		{
-			System.out.println("There was an error: " + error.getMessage());
+			writer.close();
 		}
 		catch (IOException error)
 		{
@@ -54,9 +60,15 @@ public class FileController
 		File file = new File("cubes.rbk");
 		try
 		{
-			FileInputStream fileStream = new FileInputStream(file);
-			ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+			Scanner scan;
+			scan = new Scanner(file);
+			String data = scan.nextLine();
+			byte[] bytes = DatatypeConverter.parseHexBinary(data);
+			ByteArrayInputStream byteStream = new ByteArrayInputStream(bytes);
+			ObjectInputStream objectStream = new ObjectInputStream(byteStream);
 			cubes = (RubiksCube[]) objectStream.readObject();
+			scan.close();
+			byteStream.close();
 			objectStream.close();
 		}
 		catch (FileNotFoundException error)
