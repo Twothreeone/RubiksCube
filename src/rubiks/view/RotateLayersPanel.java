@@ -14,11 +14,7 @@ public class RotateLayersPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
-	private JButton panelLabel;
-	private JButton up;
-	private JButton right;
-	private JButton down;
-	private JButton left;
+	private JButton panelLabel, up, right, down, left;
 
 	/**
 	 * Creates the RotateLayersPanel by setting default values and calling helper methods.

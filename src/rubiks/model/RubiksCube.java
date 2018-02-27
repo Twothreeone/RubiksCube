@@ -6,16 +6,8 @@ public class RubiksCube implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private RubiksPiece[][][] cube;
-	private int size;
-	private String time;
-	private String timePB;
-	private String moves;
-	private String movesPB;
-	private int deciseconds;
-	private int seconds;
-	private int minutes;
-	private int hours;
-	private int moveCount;
+	private String time, timePB, moves, movesPB;
+	private int size, deciseconds, seconds, minutes, hours, moveCount;
 	private boolean gameStart;
 	private int[][] rotation;
 

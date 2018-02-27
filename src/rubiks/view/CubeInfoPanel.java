@@ -17,20 +17,11 @@ public class CubeInfoPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
-	private DecimalFormat timeFormat;
-	private DecimalFormat movesFormat;
+	private DecimalFormat timeFormat, movesFormat;
 	private SpringLayout springLayout;
 	private Timer timer;
-	private JLabel cubeType;
-	private JLabel time;
-	private JLabel timePB;
-	private JLabel moves;
-	private JLabel movesPB;
-	private int deciseconds;
-	private int seconds;
-	private int minutes;
-	private int hours;
-	private int moveCount;
+	private JLabel cubeType, time, timePB, moves, movesPB;
+	private int deciseconds, seconds, minutes, hours, moveCount;
 	private boolean gameStart;
 
 	/**

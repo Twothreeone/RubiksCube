@@ -14,9 +14,7 @@ public class MenuPanel extends JPanel
 	private static final long serialVersionUID = 1L;
 	private SpringLayout springLayout;
 	private MenuButtonPanel menuButtonPanel;
-	private JLabel title;
-	private JLabel title2;
-	private JLabel author;
+	private JLabel title, title2, author;
 
 	/**
 	 * Creates the MenuPanel by setting default values and calling helper methods.

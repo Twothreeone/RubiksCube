@@ -14,9 +14,7 @@ public class CubeFunctionsPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
-	private JButton menu;
-	private JButton scramble;
-	private JButton solve;
+	private JButton menu, scramble, solve;
 
 	/**
 	 * Creates the CubeFunctionsPanel by setting default values and calling helper methods.

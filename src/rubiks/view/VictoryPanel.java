@@ -17,11 +17,8 @@ public class VictoryPanel extends JPanel
 	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
 	private SpringLayout springLayout;
-	private JLabel solved;
-	private JLabel pb1;
-	private JLabel pb2;
-	private JButton menu;
-	private JButton tryAgain;
+	private JLabel solved, pb1, pb2;
+	private JButton menu, tryAgain;
 
 	/**
 	 * Creates the VictoryPanel with default values and calls helper methods.
