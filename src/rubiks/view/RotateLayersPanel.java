@@ -4,8 +4,6 @@ import rubiks.controller.RubiksController;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -89,68 +87,52 @@ public class RotateLayersPanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		up.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
+		up.addActionListener(click -> {
+			int[] id = appController.findSelected();
+			if (id != null)
 			{
-				int[] id = appController.findSelected();
-				if (id != null)
-				{
-					if (id[3] == 0 || id[3] == 1 || id[3] == 3)
-						appController.rotateLayer(2, id[4], 1);
-					else if (id[3] == 2)
-						appController.rotateLayer(0, id[4], 3);
-					else if (id[3] == 4)
-						appController.rotateLayer(0, id[4], 1);
-				}
+				if (id[3] == 0 || id[3] == 1 || id[3] == 3)
+					appController.rotateLayer(2, id[4], 1);
+				else if (id[3] == 2)
+					appController.rotateLayer(0, id[4], 3);
+				else if (id[3] == 4)
+					appController.rotateLayer(0, id[4], 1);
 			}
 		});
-		right.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
+		right.addActionListener(click -> {
+			int[] id = appController.findSelected();
+			if (id != null)
 			{
-				int[] id = appController.findSelected();
-				if (id != null)
-				{
-					if (id[3] == 0 || id[3] == 2 || id[3] == 4)
-						appController.rotateLayer(1, id[5], 1);
-					else if (id[3] == 1)
-						appController.rotateLayer(0, id[5], 1);
-					else if (id[3] == 3)
-						appController.rotateLayer(0, id[5], 3);
-				}
+				if (id[3] == 0 || id[3] == 2 || id[3] == 4)
+					appController.rotateLayer(1, id[5], 1);
+				else if (id[3] == 1)
+					appController.rotateLayer(0, id[5], 1);
+				else if (id[3] == 3)
+					appController.rotateLayer(0, id[5], 3);
 			}
 		});
-		down.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
+		down.addActionListener(click -> {
+			int[] id = appController.findSelected();
+			if (id != null)
 			{
-				int[] id = appController.findSelected();
-				if (id != null)
-				{
-					if (id[3] == 0 || id[3] == 1 || id[3] == 3)
-						appController.rotateLayer(2, id[4], 3);
-					else if (id[3] == 2)
-						appController.rotateLayer(0, id[4], 1);
-					else if (id[3] == 4)
-						appController.rotateLayer(0, id[4], 3);
-				}
+				if (id[3] == 0 || id[3] == 1 || id[3] == 3)
+					appController.rotateLayer(2, id[4], 3);
+				else if (id[3] == 2)
+					appController.rotateLayer(0, id[4], 1);
+				else if (id[3] == 4)
+					appController.rotateLayer(0, id[4], 3);
 			}
 		});
-		left.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
+		left.addActionListener(click -> {
+			int[] id = appController.findSelected();
+			if (id != null)
 			{
-				int[] id = appController.findSelected();
-				if (id != null)
-				{
-					if (id[3] == 0 || id[3] == 2 || id[3] == 4)
-						appController.rotateLayer(1, id[5], 3);
-					else if (id[3] == 1)
-						appController.rotateLayer(0, id[5], 3);
-					else if (id[3] == 3)
-						appController.rotateLayer(0, id[5], 1);
-				}
+				if (id[3] == 0 || id[3] == 2 || id[3] == 4)
+					appController.rotateLayer(1, id[5], 3);
+				else if (id[3] == 1)
+					appController.rotateLayer(0, id[5], 3);
+				else if (id[3] == 3)
+					appController.rotateLayer(0, id[5], 1);
 			}
 		});
 	}

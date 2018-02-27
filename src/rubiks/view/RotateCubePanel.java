@@ -3,8 +3,6 @@ package rubiks.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -103,47 +101,11 @@ public class RotateCubePanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		up.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(2, 1);
-			}
-		});
-		right.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(1, 1);
-			}
-		});
-		down.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(2, 3);
-			}
-		});
-		left.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(1, 3);
-			}
-		});
-		rotateLeft.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(0, 3);
-			}
-		});
-		rotateRight.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.rotateCube(0, 1);
-			}
-		});
+		up.addActionListener(click -> appController.rotateCube(2, 1));
+		right.addActionListener(click -> appController.rotateCube(1, 1));
+		down.addActionListener(click -> appController.rotateCube(2, 3));
+		left.addActionListener(click -> appController.rotateCube(1, 3));
+		rotateLeft.addActionListener(click -> appController.rotateCube(0, 3));
+		rotateRight.addActionListener(click -> appController.rotateCube(0, 1));
 	}
 }

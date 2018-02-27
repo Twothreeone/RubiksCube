@@ -3,8 +3,6 @@ package rubiks.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -70,27 +68,9 @@ public class CubeFunctionsPanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		menu.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.menu();
-			}
-		});
-		scramble.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.scramble();
-			}
-		});
-		solve.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				appController.solve();
-			}
-		});
+		menu.addActionListener(click -> appController.menu());
+		scramble.addActionListener(click -> appController.scramble());
+		solve.addActionListener(click -> appController.solve());
 		menu.addMouseListener(new MouseAdapter()
 		{
 			public void mousePressed(MouseEvent onClick)
