@@ -27,6 +27,7 @@ public class VictoryPanel extends JPanel
 	 * Creates the VictoryPanel with default values and calls helper methods.
 	 * 
 	 * @param appController
+	 *            The app's RubiksController.
 	 */
 	public VictoryPanel(RubiksController appController)
 	{
