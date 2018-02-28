@@ -58,24 +58,20 @@ public class CubeInfoPanel extends JPanel
 	 */
 	private void setupTimer()
 	{
-		timer = new Timer(100, new ActionListener()
-		{
-			public void actionPerformed(ActionEvent event)
+		timer = new Timer(100, event -> {
+			deciseconds++;
+			if (deciseconds > 9)
 			{
-				deciseconds++;
-				if (deciseconds > 9)
+				deciseconds = 0;
+				seconds++;
+				if (seconds > 59)
 				{
-					deciseconds = 0;
-					seconds++;
-					if (seconds > 59)
+					seconds = 0;
+					minutes++;
+					if (minutes > 59)
 					{
-						seconds = 0;
-						minutes++;
-						if (minutes > 59)
-						{
-							minutes = 0;
-							hours++;
-						}
+						minutes = 0;
+						hours++;
 					}
 				}
 				time.setText(timeFormat.format(hours) + ":" + timeFormat.format(minutes) + ":" + timeFormat.format(seconds) + "." + deciseconds);
