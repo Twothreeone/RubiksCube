@@ -23,5 +23,8 @@ Returning to the menu also pauses the timer until you return and rotate a layer.
 
 --DOWNLOADING--
 
-To download the necessary files for running the project, just download the "Rubiks Cube" folder.
+To download the necessary files for running the project, clone the repository.
+Then unzip the file and go into the folder that appears.
+Take the "Rubiks Cube" folder out and put it where you want it.
+Delete the rest of the folders.
 To use it just run the "RubiksCube.jar" file.
