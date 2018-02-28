@@ -58,26 +58,29 @@ public class CubeInfoPanel extends JPanel
 	{
 		timer = new Timer(100, event ->
 		{
-			deciseconds++;
-			if (deciseconds > 9)
+			if (hours == 99 && minutes == 59 && seconds == 59 && deciseconds == 9)
 			{
-				deciseconds = 0;
-				seconds++;
-				if (seconds > 59)
+				timer.stop();
+			}
+			else
+			{
+				deciseconds++;
+				if (deciseconds > 9)
 				{
-					seconds = 0;
-					minutes++;
-					if (minutes > 59)
+					deciseconds = 0;
+					seconds++;
+					if (seconds > 59)
 					{
-						minutes = 0;
-						hours++;
+						seconds = 0;
+						minutes++;
+						if (minutes > 59)
+						{
+							minutes = 0;
+							hours++;
+						}
 					}
 				}
 				time.setText(timeFormat.format(hours) + ":" + timeFormat.format(minutes) + ":" + timeFormat.format(seconds) + "." + deciseconds);
-				if (hours == 99 && minutes == 59 && seconds == 59 && deciseconds == 9)
-				{
-					timer.stop();
-				}
 			}
 		});
 	}
