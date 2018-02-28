@@ -76,7 +76,7 @@ public class CubePanel extends JPanel
 		}
 		this.repaint();
 	}
-	
+
 	public void detectVictory()
 	{
 		int winCondition = 0;

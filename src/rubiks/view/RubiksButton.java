@@ -44,7 +44,8 @@ public class RubiksButton extends JButton
 	 */
 	private void setupListeners()
 	{
-		this.addActionListener(click -> {
+		this.addActionListener(click ->
+		{
 			appController.deselect();
 			setBorder(new LineBorder(Color.LIGHT_GRAY, 10 / appController.getSize() + 1));
 			selected = true;

@@ -83,7 +83,8 @@ public class RotateLayersPanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		up.addActionListener(click -> {
+		up.addActionListener(click ->
+		{
 			int[] id = appController.findSelected();
 			if (id != null)
 			{
@@ -95,7 +96,8 @@ public class RotateLayersPanel extends JPanel
 					appController.rotateLayer(0, id[4], 1);
 			}
 		});
-		right.addActionListener(click -> {
+		right.addActionListener(click ->
+		{
 			int[] id = appController.findSelected();
 			if (id != null)
 			{
@@ -107,7 +109,8 @@ public class RotateLayersPanel extends JPanel
 					appController.rotateLayer(0, id[5], 3);
 			}
 		});
-		down.addActionListener(click -> {
+		down.addActionListener(click ->
+		{
 			int[] id = appController.findSelected();
 			if (id != null)
 			{
@@ -119,7 +122,8 @@ public class RotateLayersPanel extends JPanel
 					appController.rotateLayer(0, id[4], 3);
 			}
 		});
-		left.addActionListener(click -> {
+		left.addActionListener(click ->
+		{
 			int[] id = appController.findSelected();
 			if (id != null)
 			{
