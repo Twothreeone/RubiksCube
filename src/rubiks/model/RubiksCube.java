@@ -177,6 +177,8 @@ public class RubiksCube implements Serializable
 	 * @param amount
 	 *            How many times to turn the layer.
 	 */
+	//startAbstraction
+	//startComplexity
 	public void rotateLayer(int direction, int layer, int amount)
 	{
 		for (int i = 0; i < amount; i++)
@@ -189,6 +191,8 @@ public class RubiksCube implements Serializable
 				rotateLMR(layer);
 		}
 	}
+	//endComplexity
+	//endAbstraction
 
 	/**
 	 * Calls the rotate methods properly with the given parameters to rotate the entire cube.
@@ -198,6 +202,7 @@ public class RubiksCube implements Serializable
 	 * @param amount
 	 *            How many times to turn the cube.
 	 */
+	//startAbstraction
 	public void rotateCube(int direction, int amount)
 	{
 		for (int i = 0; i < amount; i++)
@@ -225,6 +230,7 @@ public class RubiksCube implements Serializable
 			}
 		}
 	}
+	//endAbstraction
 
 	/**
 	 * Properly rotates the FSB layers of the cube using the rotation array and the fixOrientation
@@ -233,6 +239,7 @@ public class RubiksCube implements Serializable
 	 * @param layer
 	 *            How deep the layer to be turned is.
 	 */
+	//startComplexity
 	private void rotateFSB(int layer)
 	{
 		int[][] orientationToSet = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 } };
@@ -247,6 +254,7 @@ public class RubiksCube implements Serializable
 			cube[layer][rotation[i][0]][rotation[i][1]] = tempLayer[i];
 		}
 	}
+	//endComplexity
 
 	/**
 	 * Properly rotates the UED layers of the cube using the rotation array and the fixOrientation
