@@ -7,6 +7,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 public class RubiksFrame extends JFrame
 {
@@ -14,6 +16,7 @@ public class RubiksFrame extends JFrame
 	private RubiksController appController;
 	private MenuPanel menuPanel;
 	private CubePanel cubePanel;
+	private JMenuBar menuBar;
 
 	/**
 	 * Constructor for the RubiksFrame, sets the data members and sets up the frame.
@@ -27,6 +30,8 @@ public class RubiksFrame extends JFrame
 		super();
 		this.appController = appController;
 		menuPanel = new MenuPanel(appController);
+		menuBar = new JMenuBar();
+		setupMenuBar();
 		setupFrame();
 		setupListeners();
 	}
@@ -37,11 +42,18 @@ public class RubiksFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(menuPanel);
+		this.setJMenuBar(menuBar);
 		this.setSize(900, 900);
+		this.setLocationRelativeTo(null);
 		this.setTitle("Rubik's Cube");
 		this.setBackground(Color.BLACK);
 		this.setResizable(false);
 		this.setVisible(true);
+	}
+	
+	private void setupMenuBar()
+	{
+		
 	}
 
 	/**

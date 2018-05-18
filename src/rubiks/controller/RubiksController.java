@@ -2,8 +2,12 @@ package rubiks.controller;
 
 import rubiks.view.RubiksFrame;
 import rubiks.view.VictoryFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import rubiks.model.RubiksCube;
 import rubiks.model.RubiksPiece;
+
+//TODO: Look here - https://alvinalexander.com/apple/mac/java-mac-native-look/Converting_Control_keystrok.shtml
 
 public class RubiksController
 {
@@ -11,12 +15,27 @@ public class RubiksController
 	private VictoryFrame victoryFrame;
 	private RubiksCube[] cubes;
 	private int size;
+	private boolean isMac;
 
 	/**
 	 * Constructor for the RubiksController that creates a RubiksFrame.
 	 */
 	public RubiksController()
 	{
+		isMac = System.getProperty("os.name").toLowerCase().startsWith("mac os x");
+		if (isMac)
+		{
+			System.setProperty("apple.awt.application.name", "Rubik's Cube");
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+		}
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException error)
+		{
+			System.out.println("There was an error: " + error.getMessage());
+		}
 		cubes = FileController.readCubesFromFile();
 		appFrame = new RubiksFrame(this);
 	}
@@ -246,5 +265,13 @@ public class RubiksController
 	public RubiksPiece[][][] getCube()
 	{
 		return cubes[size].getCube();
+	}
+
+	/**
+	 * @return the isMac
+	 */
+	public boolean isMac()
+	{
+		return isMac;
 	}
 }

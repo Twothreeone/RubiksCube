@@ -71,15 +71,7 @@ public class FileController
 			byteStream.close();
 			objectStream.close();
 		}
-		catch (FileNotFoundException error)
-		{
-			System.out.println("There was an error: " + error.getMessage());
-		}
-		catch (IOException error)
-		{
-			System.out.println("There was an error: " + error.getMessage());
-		}
-		catch (ClassNotFoundException error)
+		catch (IOException | ClassNotFoundException error)
 		{
 			System.out.println("There was an error: " + error.getMessage());
 		}
