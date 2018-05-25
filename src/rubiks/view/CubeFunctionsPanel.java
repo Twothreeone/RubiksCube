@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -14,7 +16,8 @@ public class CubeFunctionsPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private RubiksController appController;
-	private JButton menu, scramble, solve;
+	private JButton menu, scramble, solve, undo, redo;
+	private JPanel undoRedo;
 
 	/**
 	 * Creates the CubeFunctionsPanel by setting default values and calling helper methods.
@@ -29,6 +32,9 @@ public class CubeFunctionsPanel extends JPanel
 		menu = new JButton("Menu");
 		scramble = new JButton("Scramble");
 		solve = new JButton("Solve");
+		undo = new JButton();
+		redo = new JButton();
+		undoRedo = new JPanel();
 		setupPanel();
 		setupListeners();
 	}
@@ -38,10 +44,11 @@ public class CubeFunctionsPanel extends JPanel
 	 */
 	private void setupPanel()
 	{
-		this.setLayout(new GridLayout(3, 1));
+		this.setLayout(new GridLayout(4, 1));
 		this.add(menu);
 		this.add(scramble);
 		this.add(solve);
+		this.add(undoRedo);
 		menu.setOpaque(true);
 		menu.setFont(new Font("Lucida Grande", Font.BOLD, 50));
 		menu.setForeground(Color.WHITE);
@@ -57,8 +64,19 @@ public class CubeFunctionsPanel extends JPanel
 		solve.setForeground(Color.WHITE);
 		solve.setBackground(Color.DARK_GRAY);
 		solve.setBorder(new LineBorder(Color.BLACK, 5));
-		this.setBackground(Color.DARK_GRAY);
-		setBorder(new LineBorder(Color.BLACK, 5));
+		undoRedo.setLayout(new GridLayout(1, 2));
+		undoRedo.add(undo);
+		undoRedo.add(redo);
+		undo.setOpaque(true);
+		undo.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/undoInactive.png")));
+		undo.setBackground(Color.DARK_GRAY);
+		undo.setBorder(new LineBorder(Color.BLACK, 5));
+		redo.setOpaque(true);
+		redo.setIcon(new ImageIcon(getClass().getResource("/rubiks/view/images/redoInactive.png")));
+		redo.setBackground(Color.DARK_GRAY);
+		redo.setBorder(new LineBorder(Color.BLACK, 5));
+		undoRedo.setBackground(Color.BLACK);
+		this.setBackground(Color.BLACK);
 	}
 
 	/**
