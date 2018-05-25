@@ -30,8 +30,6 @@ public class RubiksFrame extends JFrame
 		super();
 		this.appController = appController;
 		menuPanel = new MenuPanel(appController);
-		menuBar = new JMenuBar();
-		setupMenuBar();
 		setupFrame();
 		setupListeners();
 	}
@@ -42,18 +40,12 @@ public class RubiksFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(menuPanel);
-		this.setJMenuBar(menuBar);
 		this.setSize(900, 900);
 		this.setLocationRelativeTo(null);
 		this.setTitle("Rubik's Cube");
 		this.setBackground(Color.BLACK);
 		this.setResizable(false);
 		this.setVisible(true);
-	}
-	
-	private void setupMenuBar()
-	{
-		
 	}
 
 	/**
