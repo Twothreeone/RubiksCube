@@ -2,10 +2,10 @@ package rubiks.controller;
 
 import rubiks.view.RubiksFrame;
 import rubiks.view.VictoryFrame;
+import java.util.List;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import rubiks.model.RubiksCube;
-import rubiks.model.RubiksPiece;
+import rubiks.model.*;
 
 //TODO: Look here - https://alvinalexander.com/apple/mac/java-mac-native-look/Converting_Control_keystrok.shtml
 
@@ -14,6 +14,7 @@ public class RubiksController
 	private RubiksFrame appFrame;
 	private VictoryFrame victoryFrame;
 	private RubiksCube[] cubes;
+	private List<Rotation> rotations;
 	private int size;
 	private boolean isMac;
 
