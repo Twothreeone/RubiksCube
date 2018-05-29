@@ -95,11 +95,11 @@ public class RotateCubePanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		up.addActionListener(click -> appController.rotateCube(2, 1));
-		right.addActionListener(click -> appController.rotateCube(1, 1));
-		down.addActionListener(click -> appController.rotateCube(2, 3));
-		left.addActionListener(click -> appController.rotateCube(1, 3));
-		rotateLeft.addActionListener(click -> appController.rotateCube(0, 3));
-		rotateRight.addActionListener(click -> appController.rotateCube(0, 1));
+		up.addActionListener(click -> appController.rotateCube(true, 2, 1));
+		right.addActionListener(click -> appController.rotateCube(true, 1, 1));
+		down.addActionListener(click -> appController.rotateCube(true, 2, 3));
+		left.addActionListener(click -> appController.rotateCube(true, 1, 3));
+		rotateLeft.addActionListener(click -> appController.rotateCube(true, 0, 3));
+		rotateRight.addActionListener(click -> appController.rotateCube(true, 0, 1));
 	}
 }

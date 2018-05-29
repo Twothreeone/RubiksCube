@@ -87,6 +87,7 @@ public class CubeFunctionsPanel extends JPanel
 		menu.addActionListener(click -> appController.menu());
 		scramble.addActionListener(click -> appController.scramble());
 		solve.addActionListener(click -> appController.solve());
+		undo.addActionListener(click -> appController.undo());
 		menu.addMouseListener(new MouseAdapter()
 		{
 			public void mousePressed(MouseEvent onClick)

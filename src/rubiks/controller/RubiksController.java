@@ -2,6 +2,7 @@ package rubiks.controller;
 
 import rubiks.view.RubiksFrame;
 import rubiks.view.VictoryFrame;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -39,6 +40,7 @@ public class RubiksController
 		}
 		cubes = FileController.readCubesFromFile();
 		appFrame = new RubiksFrame(this);
+		rotations = new ArrayList<Rotation>();
 	}
 
 	/**
@@ -120,13 +122,14 @@ public class RubiksController
 	 * @param amount
 	 *            How many times to turn the layer.
 	 */
-	public void rotateLayer(int direction, int layer, int amount)
+	public void rotateLayer(boolean isNewRotation, int direction, int layer, int amount)
 	{
 		if (appFrame.getCubePanel().getCubeInfoPanel().isGameStart())
 		{
 			appFrame.getCubePanel().getCubeInfoPanel().incrementMoves();
 		}
 		cubes[size].rotateLayer(direction, layer, amount);
+		if (isNewRotation) rotations.add(new Rotation(false, direction, layer, amount));
 		appFrame.getCubePanel().updateColors();
 		appFrame.requestFocus();
 		if (appFrame.getCubePanel().getCubeInfoPanel().isGameStart())
@@ -143,10 +146,23 @@ public class RubiksController
 	 * @param amount
 	 *            How many times to turn the cube.
 	 */
-	public void rotateCube(int direction, int amount)
+	public void rotateCube(boolean isNewRotation, int direction, int amount)
 	{
 		cubes[size].rotateCube(direction, amount);
+		rotations.add(new Rotation(true, direction, -1, amount));
 		appFrame.getCubePanel().updateColors();
+		appFrame.requestFocus();
+	}
+	
+	public void undo()
+	{
+		if (rotations.size() > 0)
+		{
+			Rotation rotate = rotations.get(rotations.size() - 1);
+			if (rotate.isCubeRotation()) rotateCube(false, rotate.getDirection(), rotate.getAmount() + 2);
+			else rotateLayer(false, rotate.getDirection(), rotate.getLayer(), rotate.getAmount() + 2);
+			rotations.remove(rotations.size() - 1);
+		}
 		appFrame.requestFocus();
 	}
 
